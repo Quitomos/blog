@@ -370,7 +370,7 @@
 <#if settings.post_toc!true>
 	<script src="${res_base_url!}/source/lib/tocbot/dist/tocbot.min.js" defer></script>
 </#if>
-<script src="${res_base_url!}!'/js/halo-comment.js'}" defer></script>
+<script src="${res_base_url!}/js/halo-comment.js" defer></script>
 <#if settings.tag_cloud!true>
 <script src="${res_base_url!}/source/lib/jqcloud2/jqcloud.min.js" defer></script>
 <script type='text/javascript'>
