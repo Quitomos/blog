@@ -16,7 +16,7 @@
 					<div class="the-feature square from_left_and_right">
 						<a href="${page.pageUrl!'#'}" target="${page.pageTarget!}">
 							<div class="img">
-								<img src="${res_base_url!}/img/page/${page.pageImage!}">
+								<img src="/img/page/${page.pageImage!}">
 							</div>
 							<div class="info">
 								<h3>
@@ -45,7 +45,7 @@
 <#--		<div class="the-feature square from_left_and_right">-->
 <#--			<a href="${settings.feature1_link!'#'}" target="_blank">-->
 <#--				<div class="img">-->
-<#--					<img src="${settings.feature1_img!'${res_base_url!}/source/images/temp.jpg'}">-->
+<#--					<img src="${settings.feature1_img!'${res_base_url!}/img/temp.jpg'}">-->
 <#--				</div>-->
 <#--				<div class="info">-->
 <#--					<h3>-->
@@ -70,7 +70,7 @@
 <#--			<div class="the-feature square from_left_and_right">-->
 <#--			<a href="${settings.feature2_link!'#'}" target="_blank">-->
 <#--				<div class="img">-->
-<#--					<img src="${settings.feature2_img!'${res_base_url!}/source/images/temp.jpg'}">-->
+<#--					<img src="${settings.feature2_img!'${res_base_url!}/img/temp.jpg'}">-->
 <#--				</div>-->
 <#--				<div class="info">-->
 <#--					<h3>-->
@@ -95,7 +95,7 @@
 <#--		<div class="the-feature square from_left_and_right">-->
 <#--			<a href="${settings.feature3_link!'#'}" target="_blank">-->
 <#--				<div class="img">-->
-<#--					<img src="${settings.feature3_img!'${res_base_url!}/source/images/temp.jpg'}">-->
+<#--					<img src="${settings.feature3_img!'${res_base_url!}/img/temp.jpg'}">-->
 <#--				</div>-->
 <#--				<div class="info">-->
 <#--					<h3>-->

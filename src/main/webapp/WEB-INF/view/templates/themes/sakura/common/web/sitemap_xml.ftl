@@ -12,7 +12,7 @@
             </url>
         </#list>
     </#if>
-    <@categoryTag method="list" contextPath=res_base_url>
+    <@categoryTag method="list" contextPath="${theme_base!}">
         <#if categories?? && categories?size gt 0>
             <#list categories as category>
                 <url>
@@ -22,7 +22,7 @@
             </#list>
         </#if>
     </@categoryTag>
-    <@tagTag method="list" contextPath=res_base_url>
+    <@tagTag method="list" contextPath="${theme_base!}">
         <#if tags?? && tags?size gt 0>
             <#list tags as tag>
                 <url>

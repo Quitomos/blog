@@ -10,49 +10,49 @@
     */
     .video-play,
     .loadvideo {
-        background-image: url(${res_base_url!}/source/images/play@32x32.png)
+        background-image: url(${res_base_url!}/img/play@32x32.png)
     }
 
     .video-pause {
-	    background-image: url(${res_base_url!}/source/images/pause@32x32.png)
+	    background-image: url(${res_base_url!}/img/pause@32x32.png)
     }
 
     #video-add {
-        background-image: url(${res_base_url!}/source/images/add@32x32.png);
+        background-image: url(${res_base_url!}/img/add@32x32.png);
     }
 
     #loading-comments {
-        background-image: url(${res_base_url!}/source/images/disqus-preloader.svg);
+        background-image: url(${res_base_url!}/img/disqus-preloader.svg);
     }
 
     .headertop.filter-grid:before {
-        background-image: url(${res_base_url!}/source/images/grid.png)
+        background-image: url(${res_base_url!}/img/grid.png)
     }
 
     .headertop.filter-dot:before {
-        background-image: url(${res_base_url!}/source/images/dot.gif)
+        background-image: url(${res_base_url!}/img/dot.gif)
     }
 
     @media (max-width:860px) {
         .headertop.filter-dot:before {
-            background-image: url(${res_base_url!}/source/images/grid.png)
+            background-image: url(${res_base_url!}/img/grid.png)
         }
     }
 
     .search-form.is-visible {
-        background-image: url(${res_base_url!}/source/images/other/iloli.gif);
+        background-image: url(${res_base_url!}/img/other/iloli.gif);
     }
 
     #pagination .loading {
-        background-image: url(${res_base_url!}/source/images/rotating-ball-o.svg);
+        background-image: url(${res_base_url!}/img/rotating-ball-o.svg);
     }
 
     #banner_wave_1 {
-        background-image: url(${res_base_url!}/source/images/wave1.png) repeat-x;
+        background-image: url(${res_base_url!}/img/wave1.png) repeat-x;
     }
 
     #banner_wave_2 {
-        background-image: url(${res_base_url!}/source/images/wave2.png) repeat-x;
+        background-image: url(${res_base_url!}/img/wave2.png) repeat-x;
     }
     <#if (settings.cursor_skin!'sakura') == 'sakura'>
     /** 鼠标样式 */
@@ -90,7 +90,7 @@
     </#if>
 
     .cd-top {
-        background: url(${(settings.top_back_img)!'${res_base_url!}/source/images/scroll.png'}) no-repeat center;
+        background: url(${(settings.top_back_img)!'${res_base_url!}/img/scroll.png'}) no-repeat center;
     }
 
     <#if settings.theme_skin??>

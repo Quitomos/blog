@@ -12,7 +12,7 @@
 				<p>没有找到你想要的，看看其他的吧。</p>
 				<div class="sorry-inner">
 					<ul class="search-no-reasults">
-						<@postTag method="latest" top="5" contextPath=res_base_url>
+						<@postTag method="latest" top="5" contextPath="${theme_base!}">
 							<#list posts as post>
 								<li><a href="${post.fullPath!}" title="${post.title!}">${post.title!}</a> </li>
 							</#list>

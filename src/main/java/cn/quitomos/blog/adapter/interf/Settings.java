@@ -44,7 +44,5 @@ public interface Settings {
 
     String getI18n();
 
-    String getComment_mode();
-
     boolean isMathjax();
 }

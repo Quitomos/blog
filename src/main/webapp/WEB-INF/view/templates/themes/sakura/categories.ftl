@@ -12,11 +12,11 @@
         <div class="pattern-center">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.category_patternimg?? && settings.category_patternimg!='')>
-                <img data-src="${settings.category_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
+                <img data-src="${settings.category_patternimg!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
 <#--                <#else>-->
 <#--                    <img-->
 <#--                        src="${settings.rimage_url!}?category=category&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"-->
-<#--                        srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?category=category&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"-->
+<#--                        srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?category=category&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"-->
 <#--                        data-srcset="${settings.rimage_url!}?category=category&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,-->
 <#--                            ${settings.rimage_url!}?category=category&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,-->
 <#--                            ${settings.rimage_url!}?category=category&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,-->
@@ -54,7 +54,7 @@
                 </div>
                 </#if>
                 <div class="tag-chips">
-                <@categoryTag method="list" contextPath=res_base_url>
+                <@categoryTag method="list" contextPath="${theme_base!}">
                 <#list categories as category>
                     <i class="${category.icon}"></i>&nbsp;&nbsp;
                     <a href="${category.fullPath!}" title="${category.description!}" target="_self">

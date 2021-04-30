@@ -6,11 +6,11 @@
 	<div class="post-thumb">
 		<a href="${post.fullPath!}">
 		<#if post.thumbnail?? && post.thumbnail!=''>
-			<img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
+			<img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
 <#--		<#elseif settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''>-->
 <#--			<img-->
 <#--                src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"-->
-<#--                srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"-->
+<#--                srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"-->
 <#--                data-srcset="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,-->
 <#--                    ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,-->
 <#--                    ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,-->
@@ -18,7 +18,7 @@
 <#--                data-sizes="auto"-->
 <#--                class="lazyload<#if settings.rimage_cover_lqip == 'lowquality'> blur-up</#if>" />-->
 		<#else>
-			<img class="lazyload" data-src="${res_base_url!}/source/images/temp.jpg" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
+			<img class="lazyload" data-src="${res_base_url!}/img/temp.jpg" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
 		</#if>
 		</a>
 	</div><!-- thumbnail-->

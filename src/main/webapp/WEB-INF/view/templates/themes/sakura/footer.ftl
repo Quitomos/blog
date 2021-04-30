@@ -9,7 +9,7 @@
  * @package Akina
  */
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/Quitomos/cdn@master", theme_base)/>
 <#macro footer>
 </div><!-- #content -->
 <#include "comments.ftl">
@@ -37,7 +37,7 @@
 	<div class="site-info">
 		<div class="footertext">
 			<p class="foo-logo"
-			   style="background-image: url('${settings.footer_logo?default('${res_base_url!}/source/images/sakura.svg')}');"></p>
+			   style="background-image: url('${settings.footer_logo?default('${res_base_url!}/img/sakura.svg')}');"></p>
 			<@global.footer />
 		</div>
 		<div class="footer-device">
@@ -64,7 +64,7 @@
 				<#if settings.footer_ga_case_number??  && settings.footer_ga_case_number != "">
 				&nbsp;
 				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.footer_ga_select_number!}" target="_blank">
-					<img src="${res_base_url!}/source/images/other/gongan.png">${settings.footer_ga_case_number}
+					<img src="${res_base_url!}/img/other/gongan.png">${settings.footer_ga_case_number}
 				</a>	
 				</#if>
 			</p>
@@ -91,7 +91,7 @@
 <!-- m-nav-center -->
 <div id="mo-nav">
 	<div class="m-avatar">
-		<img src="${(user.avatar)!'${res_base_url!}/source/images/avatar.jpg'}">
+		<img src="${(user.avatar)!'${res_base_url!}/img/avatar.jpg'}">
 	</div>
 
 	<#if settings.glitch_text??>
@@ -101,25 +101,25 @@
 	<#if settings.focus_infos!true>
 		<p style="display:flex; justify-content:center;">
 <#--			<#if settings.twitter??>-->
-<#--				<a href="${settings.twitter!}" class="social social-twitter" target="_blank"><img src="${res_base_url!}/source/images/sns/twitter.png" width="18"/></a>-->
+<#--				<a href="${settings.twitter!}" class="social social-twitter" target="_blank"><img src="${res_base_url!}/img/sns/twitter.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.sina??>-->
-<#--				<a href="${settings.sina!}" class="social social-sina" target="_blank"><img src="${res_base_url!}/source/images/sns/sina.png" width="18"/></a>-->
+<#--				<a href="${settings.sina!}" class="social social-sina" target="_blank"><img src="${res_base_url!}/img/sns/sina.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.github??>-->
-<#--				<a href="${settings.github!}" class="social social-github" target="_blank"><img src="${res_base_url!}/source/images/sns/github.png" width="18"/></a>-->
+<#--				<a href="${settings.github!}" class="social social-github" target="_blank"><img src="${res_base_url!}/img/sns/github.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.wechat??>-->
-<#--				<a href="${settings.wechat!}" class="social social-wechat" target="_blank"><img src="${res_base_url!}/source/images/sns/wechat.png" width="18"/></a>-->
+<#--				<a href="${settings.wechat!}" class="social social-wechat" target="_blank"><img src="${res_base_url!}/img/sns/wechat.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.qq??>-->
-<#--				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/source/images/sns/qq.png" width="18"/></a>-->
+<#--				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/img/sns/qq.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.bili??>-->
-<#--				<a href="${settings.bili!}" class="social social-bili" target="_blank"><img src="${res_base_url!}/source/images/sns/bilibili.png" width="18"/></a>-->
+<#--				<a href="${settings.bili!}" class="social social-bili" target="_blank"><img src="${res_base_url!}/img/sns/bilibili.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.wangyiyun??>-->
-<#--				<a href="${settings.wangyiyun!}" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/source/images/sns/wangyiyun.png" width="18"/></a>-->
+<#--				<a href="${settings.wangyiyun!}" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/img/sns/wangyiyun.png" width="18"/></a>-->
 <#--			</#if>-->
 <#--			<#if settings.customize_link?? && settings.customize_icon?? && settings.customize_title??>-->
 <#--				<a href="${settings.customize_link!}" class="social" target="_blank" title="${settings.customize_title!}">-->
@@ -370,12 +370,12 @@
 <#if settings.post_toc!true>
 	<script src="${res_base_url!}/source/lib/tocbot/dist/tocbot.min.js" defer></script>
 </#if>
-<script src="${settings.comment_mode!'/js/halo-comment.js'}" defer></script>
+<script src="${res_base_url!}!'/js/halo-comment.js'}" defer></script>
 <#if settings.tag_cloud!true>
 <script src="${res_base_url!}/source/lib/jqcloud2/jqcloud.min.js" defer></script>
 <script type='text/javascript'>
 	var wordcloud = [
-		<@tagTag method="list" contextPath=res_base_url>
+		<@tagTag method="list" contextPath="${theme_base!}">
 		<#list tags as tag>
 		{'text': '${tag.name!}', 'weight': '${tag.postCount!}', 'link': '${tag.fullPath!}'},
 		</#list>
@@ -387,7 +387,7 @@
 <script src="${res_base_url!}/source/js/echarts/echarts.min.js" defer></script>
 <script type='text/javascript'>
 	var categoryRadar = {
-		<@categoryTag method="list" contextPath=res_base_url>
+		<@categoryTag method="list" contextPath="${theme_base!}">
 		<#list categories as category>
 		'${category.name!}': '${category.postCount!}',
 		</#list>
@@ -398,7 +398,7 @@
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.1' defer></script>
-<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.1'></script>
+<script type='text/javascript' src='${res_base_url!}/script/app.min.js?ver=1.3.1'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>

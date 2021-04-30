@@ -158,7 +158,7 @@ see https://gitee.com/yadong.zhang/DBlog/blob/master/blog-web/src/main/java/com/
             <div class="T2-h pull-right">Post Count</div>
         </li>
         <div class="clear"></div>
-        <@categoryTag method="list" contextPath=res_base_url>
+        <@categoryTag method="list" contextPath="${theme_base!}">
             <#if categories?? && categories?size gt 0>
                 <#list categories as category>
                     <li>
@@ -187,7 +187,7 @@ see https://gitee.com/yadong.zhang/DBlog/blob/master/blog-web/src/main/java/com/
             <div class="T1-h pull-left">URL</div>
             <div class="T2-h pull-right">Post Count</div>
         </li>
-        <@tagTag method="list" contextPath=res_base_url>
+        <@tagTag method="list" contextPath="${theme_base!}">
             <#if tags?? && tags?size gt 0>
                 <#list tags as tag>
                     <li>

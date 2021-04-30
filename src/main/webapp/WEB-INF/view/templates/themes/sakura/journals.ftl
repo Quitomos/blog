@@ -8,11 +8,11 @@
         <div class="pattern-center">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.journals_patternimg?? && settings.journals_patternimg!='')>
-                <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
+                <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
 <#--                <#else>-->
 <#--                    <img-->
 <#--                        src="${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"-->
-<#--                        srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"-->
+<#--                        srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"-->
 <#--                        data-srcset="${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,-->
 <#--                            ${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,-->
 <#--                            ${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,-->
@@ -51,7 +51,7 @@
       <#list journals.content as journal>
         <li id="journal-${journal.id?c}" class="journal">
           <span class="journal-author-img">
-            <img class="lazyload avatar" data-src="${user.avatar!}" alt="${user.nickname!}"  width="48" height="48" src="${res_base_url!}/source/images/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this)">
+            <img class="lazyload avatar" data-src="${user.avatar!}" alt="${user.nickname!}"  width="48" height="48" src="${res_base_url!}/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this)">
           <span class="journal-label">${journal.content!}
             <p class="journal-time">
               <span>${journal.createTime?string('yyyy-MM-dd HH:mm:ss')}</span>

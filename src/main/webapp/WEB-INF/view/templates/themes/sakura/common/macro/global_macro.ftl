@@ -62,7 +62,7 @@
 <#macro comment target,type>
     <#if !post.disallowComment!false>
         <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
-        <script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/halo-dev/halo-comment@latest/dist/halo-comment.js'}"></script>
+        <script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/Quitomos/cdn@master/js/halo-comment.js'}"></script>
         <halo-comment id="${target.id}" type="${type}"/>
     </#if>
 </#macro>

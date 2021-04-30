@@ -92,7 +92,7 @@
     <mvc:resources mapping="/js/**" location="/resource/assets/js/"/>
     <mvc:resources mapping="source/js/**" location="/resource/assets/js/"/>
     <mvc:resources mapping="/img/**" location="/resource/assets/img/"/>
-    <mvc:resources mapping="source/images/**" location="/resource/assets/img/"/>
+    <mvc:resources mapping="img/**" location="/resource/assets/img/"/>
     <mvc:resources mapping="/plugin/**" location="/resource/assets/plugin/"/>
     <mvc:resources mapping="/plugins/**" location="/resource/assets/plugin/"/>
     <mvc:resources mapping="/script/**" location="/resource/assets/script/"/>

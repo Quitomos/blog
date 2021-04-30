@@ -1,7 +1,7 @@
 <#--
     @package Akina
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/Quitomos/cdn@master", theme_base)/>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 
     <#include "inc/decorate.ftl">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2010950_uq2c7ykeiyk.css" media="noexist" onload="this.media='all'">
-    <link rel='stylesheet' href='${theme_base!}/styles/style.min.css' type='text/css'/>
+    <link rel='stylesheet' href='${res_base_url!}/styles/style.min.css' type='text/css'/>
 </head>
 <body class="error404 hfeed">
 <section class="error-404 not-found">
@@ -47,7 +47,7 @@
 <script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.1'></script>
 <script>
 var Poi = {
-    "themeBase": "${res_base_url!}",
+    "themeBase": "${theme_base!}",
     "i18n": "${settings.i18n!'auto'}"
 }
 window.onload = function() {

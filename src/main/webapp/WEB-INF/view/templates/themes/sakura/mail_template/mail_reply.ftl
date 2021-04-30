@@ -1,5 +1,5 @@
 
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/Quitomos/cdn@master", theme_base)/>
 <div style="background: white;
       width: 95%;
       max-width: 800px;
@@ -10,7 +10,7 @@
       -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.18);">
     <header style="overflow: hidden;">
-        <img style="width:100%;z-index: 666;" src="${settings.reply_mail_img!'${res_base_url!}/source/images/other/head.jpg'}">
+        <img style="width:100%;z-index: 666;" src="${settings.reply_mail_img!'${res_base_url!}/img/other/head.jpg'}">
     </header>
     <div style="padding: 5px 20px;">
         <p style="position: relative;
@@ -32,7 +32,7 @@
             <a style="text-decoration: none;color: orange" target="_blank" href="${blog_url!}" rel="noopener">${user.nickname!}</a>&nbsp;双手呈上~
         </p>
         <div style="text-align: center;">
-          <img src="${res_base_url!}/source/images/other/hr.png" style="width:100%;margin:5px auto 5px auto; display: block;">
+          <img src="${res_base_url!}/img/other/hr.png" style="width:100%;margin:5px auto 5px auto; display: block;">
           <a style="text-transform: uppercase;
                       text-decoration: none;
                       font-size: 14px;

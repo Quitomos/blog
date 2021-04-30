@@ -19,7 +19,7 @@ public class SettingsAdapter implements Settings, Serializable {
 
     @Override
     public boolean isCdn() {
-        return false;
+        return true;
     }
 
     @Override
@@ -120,11 +120,6 @@ public class SettingsAdapter implements Settings, Serializable {
     @Override
     public String getI18n() {
         return "zh";
-    }
-
-    @Override
-    public String getComment_mode() {
-        return contextPath + "/js/halo-comment.js";
     }
 
     @Override
