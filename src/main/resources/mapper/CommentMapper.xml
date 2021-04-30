@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.CommentMapper">
+
+    <sql id="tb">`comment`</sql>
+
+    <resultMap id="CommentEntity" type="Comment">
+        <id property="commentId" column="comment_id"/>
+        <association property="parentComment" column="comment_pid"
+                     select="cn.quitomos.blog.mapper.CommentMapper.getCommentById"/>
+        <association property="article" column="comment_article_id"
+                     select="cn.quitomos.blog.mapper.ArticleMapper.getArticleById"/>
+        <collection property="childList" column="commentPid=comment_id" ofType="Comment"
+                    select="cn.quitomos.blog.mapper.CommentMapper.list"/>
+    </resultMap>
+
+    <select id="getCommentById" resultMap="CommentEntity" parameterType="int">
+        select * from <include refid="tb"/>
+        where comment_id = #{arg0}
+    </select>
+
+    <select id="list" resultMap="CommentEntity">
+        select * from <include refid="tb"/>
+        <where>
+            <if test="article != null">
+                and comment_article_id = #{article.articleId}
+            </if>
+            <if test="articleId != null">
+                and comment_article_id = #{articleId}
+            </if>
+            <if test="commentPid != null">
+                and comment_pid = #{commentPid}
+            </if>
+        </where>
+        order by
+        <choose>
+            <when test="commentOrder != null">
+                ${commentOrder}
+            </when>
+            <otherwise>
+                comment_create_time desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="getCountByArticleId" resultType="java.lang.Integer">
+        select count(*) from <include refid="tb"/>
+        where comment_article_id = #{arg0}
+    </select>
+
+    <delete id="deleteCommentByArticleId">
+        delete from <include refid="tb"/>
+        where comment_article_id = #{article_id}
+    </delete>
+
+    <delete id="deleteCommentById">
+        delete from <include refid="tb"/>
+        where comment_id = #{comment_id}
+    </delete>
+
+    <insert id="insertComment" parameterType="Comment" useGeneratedKeys="true">
+        insert into <include refid="tb"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentComment != null">comment_pid,</if>
+            <if test="article != null">comment_article_id,</if>
+            <if test="commentContent != null">comment_content,</if>
+            <if test="commentAgent != null">comment_agent,</if>
+            <if test="commentIp != null">comment_ip,</if>
+            comment_create_time,
+            <if test="commentOs != null">comment_os,</if>
+            <if test="commentName != null">comment_name,</if>
+            <if test="commentAvatar != null">comment_avatar,</if>
+            <if test="commentHomepage != null">comment_homepage,</if>
+            <if test="commentEmail != null">comment_email,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentComment != null">#{parentComment.commentId},</if>
+            <if test="article != null">#{article.articleId},</if>
+            <if test="commentContent != null">#{commentContent},</if>
+            <if test="commentAgent != null">#{commentAgent},</if>
+            <if test="commentIp != null">#{commentIp},</if>
+            <choose>
+               <when test="commentCreateTime != null">#{commentCreateTime},</when>
+                <otherwise>now(),</otherwise>
+            </choose>
+            <if test="commentOs != null">#{commentOs},</if>
+            <if test="commentName != null">#{commentName},</if>
+            <if test="commentAvatar != null">#{commentAvatar},</if>
+            <if test="commentHomepage != null">#{commentHomepage},</if>
+            <if test="commentEmail != null">#{commentEmail},</if>
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.TagMapper">
+
+    <sql id="tb">`tag`</sql>
+
+    <resultMap id="TagEntity" type="Tag">
+        <id property="tagId" column="tag_id"/>
+        <association property="articleCount" column="tag_id" javaType="java.lang.Integer"
+                     select="cn.quitomos.blog.mapper.ArticleTagRefMapper.getTotalArticleByTagId"/>
+        <collection property="articleList" column="tag_id" ofType="Article"
+                    select="cn.quitomos.blog.mapper.ArticleTagRefMapper.getArticleListByTagId"/>
+    </resultMap>
+
+    <select id="list" resultMap="TagEntity">
+        select * from <include refid="tb"/>
+        order by tag_id
+    </select>
+
+    <select id="getTagById" resultMap="TagEntity">
+        select * from <include refid="tb"/>
+        where tag_id = #{arg0}
+    </select>
+
+    <insert id="insertTag" parameterType="Tag">
+        insert into <include refid="tb"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tagId != null">tag_id,</if>
+            <if test="tagName != null">tag_name,</if>
+            <if test="tagDescription != null">tag_description,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tagId != null">#{tagId},</if>
+            <if test="tagName != null">#{tagName},</if>
+            <if test="tagDescription != null">#{tagDescription},</if>
+        </trim>
+    </insert>
+
+    <update id="updateTag">
+        update <include refid="tb"/>
+        <set>
+            <if test="tagName != null">tag_name = #{tagName},</if>
+            <if test="tagDescription != null">tag_description = #{tagDescription},</if>
+        </set>
+        where tag_id = #{tagId}
+    </update>
+
+    <delete id="deleteTagById">
+        delete from <include refid="tb"/>
+        where tag_id = #{tag_id}
+    </delete>
+</mapper>

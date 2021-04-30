@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.MenuMapper">
+
+    <sql id="tb">`menu`</sql>
+
+    <resultMap id="MenuEntity" type="Menu">
+        <id property="menuId" column="menu_id"/>
+        <association property="parentMenu" column="menu_pid" javaType="Menu"
+                     select="cn.quitomos.blog.mapper.MenuMapper.getMenuById"/>
+        <collection property="childList" column="menu_id" ofType="Menu"
+                    select="cn.quitomos.blog.mapper.MenuMapper.listChild"/>
+
+    </resultMap>
+
+    <select id="getMenuById" resultMap="MenuEntity" parameterType="int">
+        select * from <include refid="tb"/>
+        where menu_id = #{arg0}
+    </select>
+
+    <select id="list" resultMap="MenuEntity">
+        select * from <include refid="tb"/>
+        <where>
+            <if test="menuPid != null">and menu_pid = #{menuPid}</if>
+        </where>
+        order by menu_order desc
+    </select>
+
+    <select id="listChild" resultMap="MenuEntity">
+        select * from <include refid="tb"></include>
+        where menu_pid = #{arg0}
+        order by menu_order desc
+    </select>
+
+    <insert id="insertMenu" parameterType="Menu">
+        insert into <include refid="tb"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">menu_id,</if>
+            <if test="parentMenu != null">menu_pid,</if>
+            <if test="menuName != null">menu_name,</if>
+            <if test="menuOrder != null">menu_order,</if>
+            <if test="menuUrl != null">menu_url,</if>
+            <if test="menuIcon != null">menu_icon,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">#{menuId},</if>
+            <if test="parentMenu != null">#{parentMenu.menuId},</if>
+            <if test="menuName != null">#{menuName},</if>
+            <if test="menuOrder != null">#{menuOrder},</if>
+            <if test="menuUrl != null">#{menuUrl},</if>
+            <if test="menuIcon != null">#{menuIcon},</if>
+        </trim>
+    </insert>
+
+    <update id="updateMenu">
+        update <include refid="tb"/>
+        <set>
+            <choose>
+                <when test="parentMenu != null">menu_pid = #{parentMenu.menuId},</when>
+                <otherwise>menu_pid = 0,</otherwise>
+            </choose>
+            <if test="menuName != null">menu_name = #{menuName},</if>
+            <if test="menuOrder">menu_order = #{menuOrder},</if>
+            <if test="menuUrl">menu_url = #{menuUrl},</if>
+            <if test="menuIcon">menu_icon = #{menuIcon},</if>
+        </set>
+        where menu_id = #{menuId}
+    </update>
+
+    <delete id="deleteMenuById">
+        delete from <include refid="tb"/>
+        where menu_id = #{menu_id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--扫描spring相关注解并注册bean-->
+    <!--有了这个就不用context:annotation-config了-->
+    <context:component-scan base-package="cn.quitomos.blog"/>
+
+    <!--注册spring mvc相关的映射器、适配器、异常处理解析器-->
+    <mvc:annotation-driven/>
+
+    <!--注册freemarker配置类-->
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <!--ftl模板文件路径-->
+        <property name="templateLoaderPath" value="/WEB-INF/view/templates/themes/sakura/"/>
+        <!--页面编码-->
+        <property name="defaultEncoding" value="UTF-8"/>
+
+        <property name="freemarkerSettings">
+            <props>
+                <!--模板缓存刷新时间(s)-->
+                <prop key="template_update_delay">0</prop>
+                <!--时区设置-->
+                <prop key="locale">zh_CN</prop>
+                <!--时间格式化-->
+                <prop key="datetime_format">yyyy-MM-dd</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <!--数字使用.来分隔-->
+                <prop key="number_format">#.##</prop>
+                <prop key="auto_import">common/macro/global_macro.ftl as global</prop>
+            </props>
+        </property>
+
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="tagTag" value-ref="tagTagDirective"/>
+                <entry key="postTag" value-ref="postTagDirective"/>
+                <entry key="menuTag" value-ref="menuTagDirective"/>
+                <entry key="categoryTag" value-ref="categoryTagDirective"/>
+                <entry key="paginationTag" value-ref="paginationTagDirective"/>
+                <entry key="linkTag" value-ref="linkTagDirective"/>
+            </map>
+        </property>
+
+    </bean>
+
+    <!--配置freemarker视图解析器-->
+    <bean id="freeMarkerViewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <!--将freemarker解析器顺序优先级提高-->
+        <property name="order" value="1"/>
+        <!--开启模板缓存-->
+        <property name="cache" value="true"/>
+        <!--configurer已经配置了-->
+        <property name="prefix" value=""/>
+        <!--配置文件后缀-->
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <!-- 是否允许session属性覆盖模型数据,默认false -->
+        <property name="allowSessionOverride" value="false" />
+        <!-- 是否允许request属性覆盖模型数据,默认false -->
+        <property name="allowRequestOverride" value="false" />
+        <!-- 开启spring提供的宏帮助(macro) -->
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <!-- 添加request attributes属性到ModelAndView中 -->
+        <property name="exposeRequestAttributes" value="true" />
+        <!-- 添加session attributes属性到ModelAndView中 -->
+        <property name="exposeSessionAttributes" value="true" />
+    </bean>
+
+    <!--配置视图解析器，进行视图定位-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="2"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--配置multipartResolver，支持文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--单个文件最大上传50MB-->
+        <property name="maxUploadSizePerFile" value="52428800"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <!--将location处的静态资源映射到mapping路径，可以通过mapping路径访问到静态资源-->
+    <!--可以代替用tomcat的defaultServlet来处理静态资源这行指令，这些静态资源会交给ResourceHttpRequestHandler处理-->
+    <mvc:resources mapping="/css/**" location="/resource/assets/css/"/>
+    <mvc:resources mapping="source/css/**" location="/resource/assets/css/"/>
+    <mvc:resources mapping="/js/**" location="/resource/assets/js/"/>
+    <mvc:resources mapping="source/js/**" location="/resource/assets/js/"/>
+    <mvc:resources mapping="/img/**" location="/resource/assets/img/"/>
+    <mvc:resources mapping="source/images/**" location="/resource/assets/img/"/>
+    <mvc:resources mapping="/plugin/**" location="/resource/assets/plugin/"/>
+    <mvc:resources mapping="/plugins/**" location="/resource/assets/plugin/"/>
+    <mvc:resources mapping="/script/**" location="/resource/assets/script/"/>
+    <mvc:resources mapping="/styles/**" location="/resource/assets/styles/"/>
+    <mvc:resources mapping="/languages/**" location="/resource/assets/languages/"/>
+    <mvc:resources mapping="source/cursor/**" location="/resource/assets/cursor/"/>
+    <mvc:resources mapping="/fonts/**" location="/resource/assets/fonts/"/>
+    <mvc:resources mapping="source/fonts/**" location="/resource/assets/fonts/"/>
+    <mvc:resources mapping="/lib/**" location="/resource/assets/lib/"/>
+    <mvc:resources mapping="source/lib/**" location="/resource/assets/lib/"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/error/**"/>
+            <ref bean="foreInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin"/>
+            <mvc:mapping path="/admin/**"/>
+            <ref bean="adminInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

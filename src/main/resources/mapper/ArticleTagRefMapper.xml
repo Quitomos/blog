@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.ArticleTagRefMapper">
+
+    <sql id="tb">`article_tag_ref`</sql>
+
+    <select id="getArticleListByTagId" resultMap="cn.quitomos.blog.mapper.ArticleMapper.ArticleEntity">
+        select a.*
+        from <include refid="tb"/> atr
+        left join `article` a
+            on atr.article_id = a.article_id
+        where atr.tag_id = #{tag_id}
+    </select>
+
+    <select id="getTagListByArticleId" resultMap="cn.quitomos.blog.mapper.TagMapper.TagEntity">
+        select t.*
+        from <include refid="tb"/> atr
+        left join `tag` t
+            on atr.tag_id = t.tag_id
+        where atr.article_id = #{article_id}
+    </select>
+
+    <delete id="deleteRefByArticleId" parameterType="int">
+        delete from <include refid="tb"/>
+        where article_id = #{article_id}
+    </delete>
+
+    <insert id="insertRef">
+        insert into <include refid="tb"/>
+        (article_id, tag_id)
+        values
+        (#{article_id}, #{tag_id})
+    </insert>
+
+    <select id="getTotalArticleByTagId" resultType="java.lang.Integer">
+        select count(*) from <include refid="tb"/>
+        where tag_id = #{tag_id}
+    </select>
+</mapper>

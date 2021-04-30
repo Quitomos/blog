@@ -1,0 +1,1927 @@
+general:
+  label: 基本设置
+  items:
+    theme_skin:
+      name: theme_skin
+      label: 主题风格
+      type: color
+      default: '#FE9600'
+    cursor_skin:
+      name: cursor_skin
+      label: 鼠标风格
+      type: radio
+      data-type: string
+      default: sakura
+      options:
+        - value: sakura
+          label: 默认
+        - value: no_cursor
+          label: 无样式
+    shownav:
+      name: shownav
+      label: 展开导航菜单
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    top_search:
+      name: top_search
+      label: 搜索按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_list_style:
+      name: post_list_style
+      label: 首页文章风格
+      type: radio
+      data-type: string
+      default: imageflow
+      options:
+        - value: standard
+          label: 标准
+        - value: imageflow
+          label: 图文
+    list_type:
+      name: list_type
+      label: 首页文章特色图（仅对标准风格生效）
+      type: radio
+      data-type: string
+      default: round
+      options:
+        - value: round
+          label: 圆形
+        - value: square
+          label: 方形
+    pagenav_style:
+      name: pagenav_style
+      label: 分页模式
+      type: radio
+      data-type: string
+      default: ajax
+      options:
+        - value: ajax
+          label: ajax加载
+        - value: np
+          label: 上一页和下一页
+    site_custom_style:
+      name: site_custom_style
+      label: 自定义CSS样式
+      type: textarea
+patternimg:
+  label: 头部装饰图
+  items:
+    patternimg:
+      name: patternimg
+      label: 头部装饰图
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '文章或部分页面的head图片'
+    archives_patternimg:
+      name: archives_patternimg
+      label: 归档页装饰图
+      type: attachment
+    photos_patternimg:
+      name: photos_patternimg
+      label: 图库页装饰图
+      type: attachment
+    journals_patternimg:
+      name: journals_patternimg
+      label: 日志页装饰图
+      type: attachment
+    links_patternimg:
+      name: links_patternimg
+      label: 友链页装饰图
+      type: attachment
+    searh_patternimg:
+      name: searh_patternimg
+      label: 搜索页装饰图
+      type: attachment
+    tag_patternimg:
+      name: tag_patternimg
+      label: 标签页默认装饰图
+      type: attachment
+    category_patternimg:
+      name: category_patternimg
+      label: 分类页默认装饰图
+      type: attachment
+mainScreen:
+  label: 第一屏
+  items:
+    head_focus:
+      name: head_focus
+      label: 总开关
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_tou:
+      name: focus_tou
+      label: 头部样式
+      type: select
+      default: glitch-text
+      options:
+        - value: no-tou
+          label: 无
+        - value: avatar
+          label: 头像
+        - value: glitch-text
+          label: 故障文字
+    glitch_text:
+      name: glitch_text
+      label: 聚焦故障文本
+      type: text
+      default: 'Hi,Friend'
+      description: '移动端：将显示在导航栏中，桌面端：该文本只有头部样式开启故障文字才能显示'
+    focus_infos:
+      name: focus_infos
+      label: 社交信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_height:
+      name: focus_height
+      label: 全屏显示
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_godown:
+      name: focus_godown
+      label: 下拉箭头
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_img_1:
+      name: focus_img_1
+      label: 背景图
+      type: attachment
+    focus_img_filter:
+      name: focus_img_filter
+      label: 背景图滤镜
+      type: select
+      default: filter-grid
+      options:
+        - value: filter-nothing
+          label: 无
+        - value: filter-undertint
+          label: 浅色
+        - value: filter-dim
+          label: 暗淡
+        - value: filter-grid
+          label: 网格
+    bgvideo:
+      name: bgvideo
+      label: 开启背景视频
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭  
+    bgvideo_url:
+      name: bgvideo_url
+      label: 视频链接（优先播放视频链接）
+      type: attachment
+    bgvideo_server:
+      name: bgvideo_server
+      label: 视频服务者
+      type: select
+      default: bilibili
+      options:
+        - value: bilibili
+          label: 哔哩哔哩
+    bgvideo_id:
+      name: bgvideo_id
+      label: 视频id
+      type: text
+      description: 'B站视频可选择AV/BV号，目前只支持B站视频'
+    bilibili_video_cid:
+      name: bilibili_video_cid
+      label: B站视频分P id
+      type: text
+      description: '分P ID不设置则默认为 1P'
+    bilibili_video_qn:
+      name: bilibili_video_qn
+      label: B站视频清晰度
+      type: select
+      data-type: long
+      default: 6
+      options:
+        - value: 6
+          label: 极速
+        - value: 16
+          label: 流畅
+        - value: 32
+          label: 清晰
+        - value: 64
+          label: 720P
+        - value: 74
+          label: 720P60
+        - value: 80
+          label: 高清
+        - value: 112
+          label: 1080P+
+        - value: 116
+          label: 1080P60
+      description: '这里展示的是除了4K之外的所有清晰度，并不代表目标视频的清晰度，请确定好目标视频所支持的清晰度，否则将报错'
+    bilibili_video_vtype:
+      name: bilibili_video_vtype
+      label: B站视频格式
+      type: select
+      data-type: long
+      default: 0
+      options:
+        - value: 0
+          label: FLV
+        - value: 1
+          label: MP4
+      description: 'MP4只有流畅或清晰'
+sns:
+  label: 社交网络
+  items:
+    wechat:
+      name: wechat
+      label: 微信二维码
+      type: attachment
+    sina:
+      name: sina
+      label: 新浪微博
+      type: text
+    qq:
+      name: qq
+      label: 腾讯QQ
+      type: text
+    qzone:
+      name: qzone
+      label: QQ空间
+      type: text
+    github:
+      name: github
+      label: Github
+      type: text
+    lofter:
+      name: lofter
+      label: Lofter
+      type: text
+    bili:
+      name: bili
+      label: BiliBili
+      type: text
+    wangyiyun:
+      name: wangyiyun
+      label: 网易云音乐
+      type: text
+    twitter:
+      name: twitter
+      label: Twitter
+      type: text
+    facebook:
+      name: facebook
+      label: Facebook
+      type: text
+    googleplus:
+      name: googleplus
+      label: Google+
+      type: text
+    jianshu:
+      name: jianshu
+      label: 简书
+      type: text
+    csdn:
+      name: csdn
+      label: CSDN
+      type: text
+    zhihu:
+      name: zhihu
+      label: 知乎
+      type: text
+    telegram:
+      name: telegram
+      label: Telegram
+      type: text
+    email:
+      name: email
+      label: 邮箱
+      type: text
+    stackoverflow:
+      name: stackoverflow
+      label: Stack Overflow
+      type: text
+    customize_icon:
+      name: customize_icon
+      label: 自定义社交图标
+      type: text
+    customize_title:
+      name: customize_title
+      label: 自定义社交标题
+      type: text
+    customize_link:
+      name: customize_link
+      label: 自定义社交链接
+      type: text
+focus:
+  label: 聚焦图
+  items:
+    top_feature:
+      name: top_feature
+      label: 是否开启聚焦
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    feature_icon:
+      name: feature_title
+      label: 聚焦图标
+      type: text
+      default: 'fa fa-anchor'
+      placeholder: '聚焦前的小图标，不填写就不显示！'
+    feature_title:
+      name: feature_title
+      label: 聚焦标题
+      type: text
+      default: ''
+      placeholder: '默认为聚焦，你也可以修改为其他，当然不能当广告用！不允许！！'
+    feature1_img:
+      name: feature1_img
+      label: 聚焦图一
+      type: attachment
+      placeholder: '尺寸257px*160px'
+    feature1_title:
+      name: feature1_title
+      label: 聚焦图一标题
+      type: text
+    feature1_desc:
+      name: feature1_desc
+      label: 聚焦图一描述
+      type: text
+    feature1_link:
+      name: feature1_link
+      label: 聚焦图一链接
+      type: text
+      default: '#'
+    feature2_img:
+      name: feature2_img
+      label: 聚焦图二
+      type: attachment
+      placeholder: '尺寸257px*160px'
+    feature2_title:
+      name: feature2_title
+      label: 聚焦图二标题
+      type: text
+    feature2_desc:
+      name: feature2_desc
+      label: 聚焦图二描述
+      type: text
+    feature2_link:
+      name: feature2_link
+      label: 聚焦图二链接
+      type: text
+      default: '#'
+    feature3_img:
+      name: feature3_img
+      label: 聚焦图三
+      type: attachment
+      placeholder: '尺寸257px*160px'
+    feature3_title:
+      name: feature3_title
+      label: 聚焦图三标题
+      type: text
+    feature3_desc:
+      name: feature3_desc
+      label: 聚焦图三描述
+      type: text
+    feature3_link:
+      name: feature3_link
+      label: 聚焦图三链接
+      type: text
+      default: '#'
+post:
+  label: 文章页
+  items:
+    post_share:
+      name: post_share
+      label: 文章分享
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_toc:
+      name: post_toc
+      label: 文章目录
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    toc_depth:
+      name: toc_depth
+      label: 目录标题展开级别
+      type: select
+      data-type: long
+      default: 0
+      options:
+        - value: 0
+          label: 不展开
+        - value: 1
+          label: 展开一级标题
+        - value: 2
+          label: 展开二级标题
+        - value: 3
+          label: 展开三级标题
+        - value: 4
+          label: 展开四级标题
+        - value: 5
+          label: 全部展开
+    post_nepre:
+      name: post_nepre
+      label: 上一篇下一篇
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    author_profile:
+      name: author_profile
+      label: 博主信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    alipay_code:
+      name: alipay_code
+      label: 支付宝打赏
+      type: attachment
+    wechat_code:
+      name: wechat_code
+      label: 微信打赏
+      type: attachment
+    code_line:
+      name: code_line
+      label: 开启代码行号
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    code_pretty:
+      name: code_pretty
+      label: 文章代码高亮主题
+      type: select
+      default: Dracula
+      options:
+        - value: AndroidStudio
+          label: AndroidStudio
+        - value: Dark
+          label: Dark
+        - value: Docco
+          label: Docco
+        - value: Dracula
+          label: Dracula
+        - value: Far
+          label: Far
+        - value: Github
+          label: Github
+        - value: Tomorrow Night
+          label: Tomorrow Night
+
+:
+  label: 评论组件
+  items:
+    comment_mode:
+      name: comment_mode
+      label: 评论模块js
+      type: text
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
+      description: "评论js模块，如果当前为空，则获取评论设置中的模块js"
+    comment_custom_style:
+      name: comment_custom_style
+      label: 自定义评论组件CSS样式
+      type: textarea
+      description: '确保样式以.halo-comment开头，防止污染其他css。如果属性不生效，则加上!important提升优先度'
+tagAndCategory:
+  label: 标签及分类页
+  items:
+    tag_randomColorMin:
+      name: tag_randomColorMin
+      label: 标签页及分类页颜色最小值
+      type: text
+      data-type: double
+      default: 0.999
+      description: '标签随机颜色最低值,值越低越偏冷色调，取值范围在0-1之间，需要小于最大值'
+    tag_randomColorMax:
+      name: tag_randomColorMax
+      label: 标签页及分类页颜色最大值
+      type: text
+      data-type: double
+      default: 1
+      description: '标签随机颜色最大值,值越高越偏暖色调，取值范围在0-1之间，需要大于最小值'
+    tag_cloud:
+      name: tag_cloud
+      label: 开启标签云
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    category_radar:
+      name: category_radar
+      label: 开启分类雷达
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+journal:
+  label: 日志页
+  items:
+    journal_color_bg_1:
+      name: journal_color_bg_1
+      label: 日志背景颜色1&按钮颜色1
+      type: color
+      default: '#E6E6FA'
+      description: '日志单数卡片的背景色以及按钮的默认颜色'
+    journal_color_font_1:
+      name: journal_color_font_1
+      label: 日志字体颜色1
+      type: color
+      default: '#000000'
+      description: '日志单数卡片的字体颜色'
+    journal_color_bg_2:
+      name: journal_color_bg_2
+      label: 日志背景颜色2&按钮颜色2
+      type: color
+      default: '#F0FFFF'
+      description: '日志双数卡片的背景色以及按钮的默认颜色'
+    journal_color_font_2:
+      name: journal_color_font_2
+      label: 日志字体颜色2
+      type: color
+      default: '#000000'
+      description: '日志双数卡片的字体颜色'
+    journal_bg:
+      name: journal_bg
+      label: 日志背景图片
+      type: text
+      description: '使用图片作为日志背景，如果设置了此项，则背景颜色1&背景颜色2均会被覆盖'
+    journal_bg_blur:
+      name: journal_bg_blur
+      label: 日志背景图片虚化
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '只针对于使用图片作为日志背景的情况下'
+    # journal_likes:
+    #   name: journal_likes
+    #   label: 日志点赞
+    #   type: radio
+    #   data-type: bool
+    #   default: false
+    #   options:
+    #     - value: true
+    #       label: 开启
+    #     - value: false
+    #       label: 关闭
+    #   description: '由于接口问题，目前该功能还不能使用'
+    # journal_comment:
+    #   name: journal_comment
+    #   label: 日志评论
+    #   type: radio
+    #   data-type: bool
+    #   default: false
+    #   options:
+    #     - value: true
+    #       label: 开启
+    #     - value: false
+    #       label: 关闭
+    #   description: '需要评论模块支持，之后增加' 
+photos:
+  label: 相册页
+  items:
+    photos_style:
+      name: photos_style
+      label: 相册布局风格
+      type: select
+      default: justify
+      options:
+        - value: justify
+          label: 合理布局
+        - value: masonry
+          label: 瀑布流布局
+        - value: packery
+          label: 填充式瀑布流布局（实验性）
+    is_thumbnail:
+      name: is_thumbnail
+      label: 相册列表使用缩略图
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    default_group:
+      name: default_group
+      label: 默认展示分组
+      type: text
+      data-type: string
+      default: ''
+      placeholder: '请填写分组名称'
+    photos_gutter:
+      name: photos_gutter
+      label: 图像之间的间距
+      type: text
+      data-type: long
+      default: 10
+    masonry_column:
+      name: masonry_column
+      label: 瀑布流列数(移动端始终为1)
+      type: select
+      default: 3
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+    masonry_changer_min:
+      name: masonry_changer_min
+      label: 瀑布流切换功能最小列数
+      type: select
+      default: 3
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+    masonry_changer_max:
+      name: masonry_changer_max
+      label: 瀑布流切换功能最大列数
+      type: select
+      default: 5
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+random_image:
+  label: 随机图
+  items:
+    rimage_url:
+      name: rimage_url
+      label: 随机图 API 地址
+      type: text
+      default: 'https://api.lixingyong.com/api/images'
+      placeholder: 请输入 API 地址
+      description: 随机图 API 地址，有能力者可以自行搭建。不过一般建议使用默认的即可，否则可能无法解析。
+    rimage_cover_open:
+      name: rimage_cover_open
+      label: 是否开启随机封面图
+      type: radio
+      data-type: bool
+      default: true
+      description: 开启随机封面图之后，如果没有为文章设置封面图，则会从随机图库内取一张
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_lqip:
+      name: rimage_cover_lqip
+      label: 延迟占位方式
+      type: select
+      data-type: string
+      default: loading
+      description: 在图片还未加载之前的过渡效果
+      options:
+        - value: loading
+          label: 固定加载图
+        - value: lowquality
+          label: 低质量图
+    rimage_cover_itype:
+      name: rimage_cover_itype
+      label: 封面列表图获取范围
+      type: select
+      data-type: string
+      default: image
+      description: 封面图获取范围，设置之后，将从设置范围中返回图片
+      options:
+        - value: image
+          label: 所有图片
+        - value: album
+          label: 相册
+        - value: category
+          label: 分类
+        - value: user
+          label: 用户
+    rimage_cover_id:
+      name: rimage_cover_id
+      label: 封面图获取范围编号
+      type: text
+      description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
+    rimage_cover_sheet_open:
+      name: rimage_cover_sheet_open
+      label: 页面是否使用随机图
+      type: radio
+      data-type: bool
+      default: true
+      description: 页面是否使用随机图的设置随机获取图片。其他配置与封面图一致。(如果某个页面或文章不想使用随机图，则可以使用元数据取消。如 K -> ri, value-> false)
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_back_open:
+      name: rimage_cover_back_open
+      label: 首页背景是否使用随机图
+      type: radio
+      data-type: bool
+      default: false
+      description: 首页背景是否启用随机图，如果启用，则第一屏中的首页背景图片将会无效化
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_back_itype:
+      name: rimage_cover_back_itype
+      label: 背景图获取范围
+      type: select
+      data-type: string
+      default: image
+      description: 封面图获取范围，设置之后，将从设置范围中返回图片
+      options:
+        - value: image
+          label: 所有图片
+        - value: album
+          label: 相册
+        - value: category
+          label: 分类
+        - value: user
+          label: 用户
+    rimage_cover_back_id:
+      name: rimage_cover_id
+      label: 背景图获取范围编号
+      type: text
+      description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
+    rimage_cover_back_num:
+      name: rimage_cover_back_num
+      label: 背景图片循环张数
+      type: select
+      data-type: long
+      default: 5
+      options:
+        - value: 3
+          label: 三张
+        - value: 5
+          label: 五张
+        - value: 10
+          label: 十张
+        - value: 0
+          label: 无限
+
+theme:
+  label: 主题切换
+  items:
+    theme_change:
+      name: theme_change
+      label: 是否开启主题切换
+      type: radio
+      data-type: bool
+      default: true
+      description: '所有主题的样式可以自定义，但一般情况下使用默认的足够了【务必保证第一项存在】'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    default_theme:
+      name: default_theme
+      label: 默认主题
+      type: select
+      default: "bg_0"
+      description: 可以设置默认主题，指定任何用户进入页面之后所看到的主题样式
+      options:
+        - value: "bg_0"
+          label: 主题一
+        - value: "bg_1"
+          label: 主题二
+        - value: "bg_2"
+          label: 主题三
+        - value: "bg_3"
+          label: 主题四
+        - value: "bg_4"
+          label: 主题五
+        - value: "bg_5"
+          label: 主题六
+        - value: "bg_6"
+          label: 主题七
+        - value: "bg_7"
+          label: 主题八
+
+    theme_dark:
+      name: theme_dark
+      label: 黑夜模式主题色
+      type: color
+      default: '#FE9600'
+    dark_imgbri:
+      name: dark_imgbri
+      label: 黑夜模式图像亮度
+      type: number
+      default: 0.7  
+    dark_widget_tmd:
+      name: dark_widget_tmd
+      label: 黑夜模式控件透明度
+      type: number
+      default: 0.7
+    bg_name_0:
+      name: bg_name_0
+      label: 主题一 名称
+      type: text
+      default: 'white'
+      description: '主题的背景名，目前可为空'
+    bg_desc_0:
+      name: bg_desc_0
+      label: 主题一 描述
+      type: text
+      default: '默认是纯洁的白色~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_0:
+      name: bg_url_0
+      label: 主题一 图片链接
+      type: attachment
+      default: ''
+    bg_img_strategy_0:
+      nmae: bg_img_strategy_0
+      label: 主题一 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_0:
+      name: bg_icon_0
+      label: 主题一 图标
+      type: text
+      default: 'fa fa-television'
+      description: '图标可能无法立即生效'
+    bg_night_0:
+      name: bg_night_0
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_1:
+      name: bg_name_1
+      label: 主题二 名称
+      type: text
+      default: 'sakura'
+      description: '主题的背景名，目前可为空'
+    bg_desc_1:
+      name: bg_desc_1
+      label: 主题二 描述
+      type: text
+      default: '樱花飞舞~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_1:
+      name: bg_url_1
+      label: 主题二 图片链接
+      type: attachment
+      default: 'https://view.lixingyong.com/images/2020/07/23/695cc3a80b21ee7f18bd731824ab9638.png'
+    bg_img_strategy_1:
+      nmae: bg_img_strategy_1
+      label: 主题二 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_1:
+      name: bg_icon_1
+      label: 主题二 图标
+      type: text
+      default: 'iconfont icon-sakura'
+      description: '图标可能无法立即生效'
+    bg_night_1:
+      name: bg_night_1
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_2:
+      name: bg_name_2
+      label: 主题三 名称
+      type: text
+      default: 'gribs'
+      description: '主题的背景名，目前可为空'
+    bg_desc_2:
+      name: bg_desc_2
+      label: 主题三 描述
+      type: text
+      default: '格子控！'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_2:
+      name: bg_url_2
+      label: 主题三 图片链接
+      type: attachment
+      default: 'https://view.lixingyong.com/images/2020/07/23/defc1b6783cd16774900517d3b38ded7.jpg'
+    bg_img_strategy_2:
+      nmae: bg_img_strategy_2
+      label: 主题三 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_2:
+      name: bg_icon_2
+      label: 主题三 图标
+      type: text
+      default: 'fa fa-slack'
+      description: '图标可能无法立即生效'
+    bg_night_2:
+      name: bg_night_2
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_3:
+      name: bg_name_3
+      label: 主题四 名称
+      type: text
+      default: 'KAdots'
+      description: '主题的背景名，目前可为空'
+    bg_desc_3:
+      name: bg_desc_3
+      label: 主题四 描述
+      type: text
+      default: '小点点~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_3:
+      name: bg_url_3
+      label: 主题四 图片链接
+      type: attachment
+      default: 'https://view.lixingyong.com/images/2020/07/23/kyotoanimation.png'
+    bg_img_strategy_3:
+      nmae: bg_img_strategy_3
+      label: 主题四 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_3:
+      name: bg_icon_3
+      label: 主题四 图标
+      type: text
+      default: 'iconfont icon-dots'
+      description: '图标可能无法立即生效'
+    bg_night_3:
+      name: bg_night_3
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_4:
+      name: bg_name_4
+      label: 主题五 名称
+      type: text
+      default: 'totem'
+      description: '主题的背景名，目前可为空'
+    bg_desc_4:
+      name: bg_desc_4
+      label: 主题五 描述
+      type: text
+      default: '充满力量的橙色'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_4:
+      name: bg_url_4
+      label: 主题五 图片链接
+      type: attachment
+      default: 'https://view.lixingyong.com/images/2020/07/23/little-monster.png'
+    bg_img_strategy_4:
+      nmae: bg_img_strategy_4
+      label: 主题五 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_4:
+      name: bg_icon_4
+      label: 主题五 图标
+      type: text
+      default: 'fa fa-optin-monster'
+      description: '图标可能无法立即生效'
+    bg_night_4:
+      name: bg_night_4
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_5:
+      name: bg_name_5
+      label: 主题六 名称
+      type: text
+      default: 'pixiv'
+      description: '主题的背景名，目前可为空'
+    bg_desc_5:
+      name: bg_desc_5
+      label: 主题六 描述
+      type: text
+      default: 'pixiv主题~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_5:
+      name: bg_url_5
+      label: 主题六 图片链接
+      type: attachment
+      default: 'https://view.lixingyong.com/images/2020/07/23/star02.png'
+    bg_img_strategy_5:
+      nmae: bg_img_strategy_5
+      label: 主题六 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_5:
+      name: bg_icon_5
+      label: 主题六 图标
+      type: text
+      default: 'iconfont icon-pixiv'
+      description: '图标可能无法立即生效'
+    bg_night_5:
+      name: bg_night_5
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_6:
+      name: bg_name_6
+      label: 主题七 名称
+      type: text
+      default: 'bing'
+      description: '主题的背景名，目前可为空'
+    bg_desc_6:
+      name: bg_desc_6
+      label: 主题七 描述
+      type: text
+      default: '必应图片'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_6:
+      name: bg_url_6
+      label: 主题七 图片链接
+      type: attachment
+      default: 'https://api.shino.cc/bing/'
+    bg_img_strategy_6:
+      nmae: bg_img_strategy_6
+      label: 主题七 图片处理策略
+      type: select
+      default: cover
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_6:
+      name: bg_icon_6
+      label: 主题七 图标
+      type: text
+      default: 'iconfont icon-bing'
+      description: '图标可能无法立即生效'
+    bg_night_6:
+      name: bg_night_6
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_7:
+      name: bg_name_7
+      label: 主题八 名称
+      type: text
+      default: 'dark'
+      description: '主题的背景名，目前可为空'
+    bg_desc_7:
+      name: bg_desc_7
+      label: 主题八 描述
+      type: text
+      default: '关灯！'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_7:
+      name: bg_url_7
+      label: 主题八 图片链接
+      type: attachment
+      default: ''
+    bg_img_strategy_7:
+      nmae: bg_img_strategy_7
+      label: 主题八 图片处理策略
+      type: select
+      default: cover
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
+    bg_icon_7:
+      name: bg_icon_7
+      label: 主题八 图标
+      type: text
+      default: 'fa fa-moon-o'
+      description: '图标可能无法立即生效'
+    bg_night_7:
+      name: bg_night_7
+      label: 黑夜模式
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+live2d:
+  label: 看板娘
+  items:
+    live2d_modelAPI:
+      name: live2d_modelAPI
+      label: 看板娘API地址
+      type: text
+      default: "//live2d.fghrsh.net/api/"
+      description: '后台API地址，有能力的可以自己搭建'
+    live2d_tipsMessage:
+      name: live2d_tipsMessage
+      label: 提示语文件地址
+      type: text
+      default: ""
+      description: '提示语地址，不填则默认在live2d插件目录下 /json/***-tips.json'
+    live2d_hitokotoAPI:
+      name: live2d_hitokotoAPI
+      label: 一言API接口
+      type: select
+      data-type: string
+      default: "hitokoto.cn"
+      options:
+        - value: hitokoto.cn
+          label: hitokoto.cn
+        - value: lwl12.com
+          label: lwl12.com
+        - value: jinrishici.com
+          label: jinrishici.com（古诗词）
+      description: '看板娘静置时的语句，有能力的可以自己搭建'
+    live2d_modelId:
+      name: live2d_modelId
+      label: 默认模型（分组）ID
+      type: text
+      data-type: long
+      default: 1
+    live2d_modelTexturesId:
+      name: live2d_modelId
+      label: 默认材质(模型) ID
+      type: text
+      data-type: long
+      default: 1
+    live2d_showToolMenu:
+      name: live2d_showToolMenu
+      label: 显示工具栏
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canCloseLive2d:
+      name: live2d_canCloseLive2d
+      label: 关闭看板娘 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canSwitchModel:
+      name: live2d_canSwitchModel
+      label: 切换模型 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canSwitchTextures:
+      name: live2d_canSwitchModel
+      label: 切换材质 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canSwitchHitokoto:
+      name: live2d_canSwitchHitokoto
+      label: 切换一言 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canTakeScreenshot:
+      name: live2d_canTakeScreenshot
+      label: 看板娘截图 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canTurnToHomePage:
+      name: live2d_canTurnToHomePage
+      label: 返回首页 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_canTurnToAboutPage:
+      name: live2d_canTurnToAboutPage
+      label: 跳转关于页 按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_modelStorage:
+      name: live2d_modelStorage
+      label: 记录 ID (刷新后恢复)
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 显示
+        - value: false
+          label: 隐藏
+    live2d_modelRandMode:
+      name: live2d_modelRandMode
+      label: 模型切换类型
+      type: select
+      data-type: string
+      default: 'rand'
+      options:
+        - value: 'rand'
+          label: 随机
+        - value: 'switch'
+          label: 顺序
+    live2d_modelTexturesRandMode:
+      name: live2d_modelTexturesRandMode
+      label: 材质切换类型
+      type: select
+      data-type: string
+      default: 'rand'
+      options:
+        - value: 'rand'
+          label: 随机
+        - value: 'switch'
+          label: 顺序
+    live2d_showHitokoto:
+      name: live2d_showHitokoto
+      label: 空闲时出现一言
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_showF12Status:
+      name: live2d_showF12Status
+      label: 控制台显示加载状态
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_showF12Message:
+      name: live2d_showF12Message
+      label: 提示消息输出到控制台
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_showF12OpenMsg:
+      name: live2d_showF12OpenMsg
+      label: 控制台被打开触发提醒
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_showCopyMessage:
+      name: live2d_showCopyMessage
+      label: 内容被复制触发提醒
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_showWelcomeMessage:
+      name: live2d_showWelcomeMessage
+      label: 进入面页时显示欢迎语
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_takagiSize:
+      name: live2d_takagiSize
+      label: 看板娘大小
+      type: text
+      data-type: string
+      default: "280x250"
+    live2d_takagiTipsSize:
+      name: live2d_takagiTipsSize
+      label: 提示框大小
+      type: text
+      data-type: string
+      default: "250x70"
+    live2d_takagiFontSize:
+      name: live2d_takagiFontSize
+      label: 字体大小
+      type: text
+      data-type: string
+      default: "12px"
+    live2d_takagiToolFont:
+      name: live2d_takagiToolFont
+      label: 工具栏字体
+      type: text
+      data-type: string
+      default: "14px"
+    live2d_takagiToolLine:
+      name: live2d_takagiToolLine
+      label: 工具栏行高
+      type: text
+      data-type: string
+      default: "20px"
+    live2d_takagiToolTop:
+      name: live2d_takagiToolTop
+      label: 工具栏顶部边距
+      type: text
+      data-type: string
+      default: "0px"
+    live2d_takagiMinWidth:
+      name: live2d_takagiMinWidth
+      label: 显示看板娘的最大宽度
+      type: text
+      data-type: string
+      default: "768px"
+      description: '当页面小于指定宽度的时候，隐藏看板娘，输入disable则停用此功能'
+    live2d_takagiEdgeSide:
+      name: live2d_takagiEdgeSide
+      label: 看板娘贴边方向
+      type: text
+      data-type: string
+      default: "left:0"
+      description: '使用绝对定位 left:0 就代表靠左'
+    live2d_takagiDraggable:
+      name: live2d_takagiDraggable
+      label: 看板娘拖拽方案
+      type: select
+      data-type: string
+      default: 'disable'
+      options:
+        - value: 'disable'
+          label: 禁用拖拽
+        - value: 'axis-x'
+          label: 水平拖拽
+        - value: 'unlimited'
+          label: 自由拖拽
+    live2d_takagiDraggableRevert:
+      name: live2d_takagiDraggableRevert
+      label: 松开鼠标还原拖拽位置
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_aboutPageUrl:
+      name: live2d_aboutPageUrl
+      label: 关于页地址
+      type: text
+      data-type: string
+      default: ""
+    live2d_screenshotCaptureName:
+      name: live2d_screenshotCaptureName
+      label: 看板娘截图文件名
+      type: text
+      data-type: string
+      default: "live2d.png"
+    live2d_style:
+      name: live2d_style
+      label: 额外CSS
+      type: textarea
+      data-type: string
+      default: ""
+      description: '额外CSS，请注意，最好最外层使用.takagi 以免污染其他css'
+additional:
+  label: 背景音乐
+  items:
+    aplayer_float:
+      name: aplayer_float
+      label: 开启左下方音乐浮动（需要同时开启Aplayer插件）
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    aplayer_server:
+      name: aplayer_server
+      label: 音乐类别
+      type: select
+      default: netease
+      options:
+        - value: netease
+          label: 网易云音乐
+    aplayer_id:
+      name: aplayer_id
+      label: 音乐id/歌单id
+      type: text
+      default: 2345868969
+    aplayer_type:
+      name: aplayer_type
+      label: 类别
+      type: select
+      default: playlist
+      options:
+        - value: playlist
+          label: 歌单
+    aplayer_preload:
+      name: aplayer_preload
+      label: 预加载
+      type: select
+      default: none
+      options:
+        - value: none
+          label: none
+        - value: metadata
+          label: metadata
+        - value: auto
+          label: auto
+    aplayer_autoplay:
+      name: aplayer_autoplay
+      label: 自动播放
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: 由于浏览器限制，此功能可能无法生效！（也建议不要开启，会产生噪音，影响用户体验）
+    aplayer_order:
+      name: aplayer_order
+      label: 循环顺序
+      type: select
+      default: random
+      options:
+        - value: list
+          label: list
+        - value: random
+          label: random
+    aplayer_theme:
+      name: aplayer_theme
+      label: 主题色
+      type: color
+      default: '#FFA500'
+toast:
+  label: 提示及监听
+  items:
+    open_toast:
+      name: open_toast
+      label: 开启全局提示功能
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    toast_width:
+      name: toast_width
+      label: 提示组件宽度
+      type: text
+      data-type: long
+      default: 260
+    toast_height:
+      name: toast_height
+      label: 提示组件高度
+      type: text
+      data-type: long
+      default: 60
+    toast_top:
+      name: toast_top
+      label: 评论组件垂直位置
+      type: select
+      default: top
+      options:
+        - value: top
+          label: 顶部
+        - value: centent
+          label: 居中
+    toast_color:
+      name: toast_color
+      label: 提示组件文本颜色
+      type: color
+      default: '#fff'
+      description: '默认为白色，可能看不清，但实际上点击是存在的>_<'
+    toast_font_size:
+      name: toast_font_size
+      label: 提示组件文本大小
+      type: text
+      data-type: long
+      default: 14
+    copy_monitor:
+      name: copy_monitor
+      label: 监听复制事件
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    copyright_notice:
+      name: copyright_notice
+      label: 复制内容增加版权声明
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+others:
+  label: 其他
+  items:
+    poi_pjax:
+      name: poi_pjax
+      label: 开启PJAX局部刷新
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    cdn:
+      name: cdn
+      label: 资源使用CDN
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '开启后静态资源将使用免费的 jsdelivr CDN加载，关闭后使用服务器网络加载'
+    i18n:
+      name: i18n
+      label: 主题语言
+      type: select
+      default: auto
+      options:
+        - value: auto
+          label: 自动
+        - value: zh
+          label: 中文（简体）
+        # - value: en
+        #   label: 英文
+    reply_mail_img:
+      name: reply_mail_img
+      label: 邮件回复模块图片
+      type: attachment
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/head_2.jpg"
+    top_back_mode:
+      name: top_back_mode
+      label: 回到顶部样式
+      type: select
+      default: lanyard
+      description: 回到顶部样式，可以通过此选项，将 PC 设置与移动端一样的
+      options:
+        - value: lanyard
+          label: 挂绳
+        - value: simplify
+          label: 精简
+    top_back_img:
+      name: 回到顶部图片
+      label: 回到顶部图片
+      type: attachment
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/scroll.png"
+    footer_logo:
+      name: footer_logo
+      label: 页脚logo
+      type: attachment
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/sakura.svg"
+    footer_case_number:
+      name: footer_case_number
+      label: ICP 备案信息
+      type: text
+      default: ""
+      description: "为空则不展示 ICP 备案号（建议添加）"
+    footer_ga_case_number:
+      name: footer_ga_case_number
+      label: 公安备案信息
+      type: text
+      default: ""
+      description: "为空则不展示公安备案信息"
+    footer_ga_select_number:
+      name: footer_ga_select_number
+      label: 公安联网备案号
+      type: text
+      default: ""
+      description: "应与公安备案信息内的编号一致"   
+    head_notice:
+      name: head_notice
+      label: 开启公告
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    notice_title:
+      name: notice_title
+      label: 公告内容
+      type: textarea
+      placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
+    keep_record_mode:
+      name: keep_record_mode
+      label: 备案模式
+      type: radio
+      data-type: bool
+      default: false
+      description: 备案模式，开启之后将隐藏所有留言、评论功能
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+plugin:
+  label: 插件功能
+  items:
+    is_aplayer:
+      name: is_aplayer
+      label: 开启Aplayer插件
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    live2d_switch:
+      name: live2d_switch
+      label: 开启Live2D插件
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    mathjax:
+      name: mathjax
+      label: 开启 mathjax 数学公式插件
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--加载properties文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--配置druid连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init"
+          destroy-method="close">
+
+        <!--基本属性-->
+        <property name="driverClassName" value="${mysql.driver}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!--获取连接等待超时时间-->
+        <property name="maxWait" value="60000"/>
+
+        <!--多久进行一次检测，以关闭空闲连接-->
+        <property name="minEvictableIdleTimeMillis" value="60000"/>
+
+        <!--用来检测连接是否有效的探测sql，mysql默认为“SELECT 1”-->
+        <property name="validationQuery" value="SELECT 1"/>
+
+        <!--用来在不同时期检查连接是否有效-->
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!--开启PreparedStatements的cache并设置大小-->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!--配置监控统计的filter-->
+        <property name="filters" value="stat"/>
+    </bean>
+
+    <!--将mybatis的SessionFactory交给spring管理-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath*:mapper/*Mapper.xml"/>
+        <property name="typeAliasesPackage" value="cn.quitomos.blog.entity"/>
+    </bean>
+
+    <!--将mybatis的MapperScanner配置交给spring管理-->
+    <!--用了这个就不用加@Mapper了-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.quitomos.blog.mapper"/>
+        <!--传name值而不是传ref，推迟SessionFactory的传入-->
+        <!--防止了scanner初始化先于sqlSessionFactory的bean的初始化，导致dataSource没被替换就加载了mybatis-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!--spring事务管理-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--事务传播-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--如果存在一个事务，则在当前事务中进行。如果没有事务则开启新事务-->
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <!--如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行-->
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="list*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--事务实现是基于aop的-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.quitomos.blog.service.impl.*.*(..))"/>
+    </aop:config>
+
+    <tx:annotation-driven/>
+
+</beans>

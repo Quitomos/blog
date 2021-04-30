@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.AccountMapper">
+
+    <sql id="tb">`account`</sql>
+
+    <select id="list" resultType="Account">
+        select * from <include refid="tb"/>
+        order by account_order desc
+    </select>
+
+    <select id="getAccountById" resultType="Account">
+        select * from <include refid="tb"/>
+        where account_id = #{arg0}
+    </select>
+
+    <insert id="insertAccount" parameterType="Account">
+        insert into <include refid="tb"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="accountId != null">account_id,</if>
+            <if test="accountName != null">account_name,</if>
+            <if test="accountUrl != null">account_url,</if>
+            <if test="accountIcon != null">account_icon,</if>
+            <if test="accountOrder != null">account_order,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="accountId != null">#{accountId},</if>
+            <if test="accountName != null">#{accountName},</if>
+            <if test="accountUrl != null">#{accountUrl},</if>
+            <if test="accountIcon != null">#{accountIcon},</if>
+            <if test="accountOrder != null">#{accountOrder},</if>
+        </trim>
+    </insert>
+
+    <update id="updateAccount">
+        update <include refid="tb"/>
+        <set>
+            <if test="accountName != null">account_name = #{accountName},</if>
+            <if test="accountUrl != null">account_url = #{accountUrl},</if>
+            <if test="accountIcon != null">account_icon = #{accountIcon},</if>
+            <if test="accountOrder != null">account_order = #{accountOrder},</if>
+        </set>
+        where account_id = #{accountId}
+    </update>
+
+    <delete id="deleteAccountById">
+        delete from <include refid="tb"/>
+        where account_id = #{account_id}
+    </delete>
+</mapper>

@@ -1,0 +1,6 @@
+/target/
+/.idea/
+/catalina.base_IS_UNDEFINED/
+/logs/
+/sql/data.sql
+/.gradle/

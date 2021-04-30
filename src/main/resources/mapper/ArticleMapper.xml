@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.ArticleMapper">
+
+    <sql id="tb">`article`</sql>
+    
+    <resultMap id="ArticleEntity" type="Article">
+        <id property="articleId" column="article_id"/>
+        <association property="user" column="article_user_id" javaType="User"
+                     select="cn.quitomos.blog.mapper.UserMapper.getUserById"/>
+        <association property="articleCommentCount" column="article_id" javaType="Integer"
+                     select="cn.quitomos.blog.mapper.CommentMapper.getCountByArticleId"/>
+        <collection property="categoryList" column="article_id" ofType="Category"
+                    select="cn.quitomos.blog.mapper.ArticleCategoryRefMapper.getCategoryListByArticleId"/>
+        <collection property="tagList" column="article_id" ofType="Tag"
+                    select="cn.quitomos.blog.mapper.ArticleTagRefMapper.getTagListByArticleId"/>
+    </resultMap>
+
+    <select id="list" resultMap="ArticleEntity">
+        select * from <include refid="tb"/>
+        <where>
+            <if test="user != null">
+                and article_user_id = #{user.userId}
+            </if>
+            <if test="keyword != null">
+                and article_content like concat('%',trim(#{keyword}),'%')
+            </if>
+        </where>
+        order by
+        <choose>
+            <when test="articleOrder != null">
+                ${articleOrder}
+            </when>
+            <otherwise>
+                article_create_time desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="getArticleById" parameterType="int" resultMap="ArticleEntity">
+        select * from <include refid="tb"/>
+        where article_id = #{arg0}
+    </select>
+
+    <select id="getPrevious" resultMap="ArticleEntity">
+        select * from <include refid="tb"/>
+        where article_create_time &lt; #{arg0}
+        limit 1
+    </select>
+
+    <select id="getNext" resultMap="ArticleEntity">
+        select * from <include refid="tb"/>
+        where article_create_time &gt; #{arg0}
+        limit 1
+    </select>
+
+    <insert id="insertArticle" parameterType="Article" useGeneratedKeys="true" keyProperty="articleId">
+        insert into <include refid="tb"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user != null">article_user_id,</if>
+            <if test="articleTitle != null">article_title,</if>
+            article_content,
+            <if test="articleViewCount != null">article_view_count,</if>
+            <if test="articleLikeCount != null">article_like_count,</if>
+            <if test="articleIsComment != null">article_is_comment,</if>
+            <if test="articleStatus != null">article_status,</if>
+            <if test="articleOrder != null">article_order,</if>
+            article_update_time,
+            article_create_time,
+            article_summary,
+            <if test="articleImage != null">article_image,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user != null">#{user.userId},</if>
+            <if test="articleTitle != null">#{articleTitle},</if>
+            <choose>
+                <when test="articleContent != null">#{articleContent},</when>
+               <otherwise>'null',</otherwise>
+            </choose>
+            <if test="articleViewCount != null">#{articleViewCount},</if>
+            <if test="articleLikeCount != null">#{articleLikeCount},</if>
+            <if test="articleIsComment != null">#{articleIsComment},</if>
+            <if test="articleStatus != null">#{articleStatus},</if>
+            <if test="articleOrder != null">#{articleOrder},</if>
+            <choose>
+                <when test="articleUpdateTime != null">#{articleUpdateTime},</when>
+                <otherwise>now(),</otherwise>
+            </choose>
+            <choose>
+                <when test="articleCreateTime != null">#{articleCreateTime},</when>
+                <otherwise>now(),</otherwise>
+            </choose>
+            <choose>
+                <when test="articleSummary != null">#{articleSummary},</when>
+                <otherwise>'null',</otherwise>
+            </choose>
+            <if test="articleImage != null">#{articleImage},</if>
+        </trim>
+    </insert>
+
+    <update id="updateArticle" parameterType="Article">
+        update <include refid="tb"/>
+        <set>
+            <if test="user != null">article_user_id = #{user.userId},</if>
+            <if test="articleTitle != null">article_title = #{articleTitle},</if>
+            <if test="articleContent != null">article_content = #{articleContent},</if>
+            <if test="articleViewCount != null">article_view_count = #{articleViewCount},</if>
+            <if test="articleLikeCount != null">article_like_count = #{articleLikeCount},</if>
+            <if test="articleIsComment != null">article_is_comment = #{articleIsComment},</if>
+            <if test="articleStatus != null">article_status = #{articleStatus},</if>
+            <if test="articleOrder != null">article_order = #{articleOrder},</if>
+            <if test="articleUpdateTime != null">article_update_time = #{articleUpdateTime},</if>
+            <if test="articleCreateTime != null">article_create_time = #{articleCreateTime},</if>
+            <if test="articleSummary != null">article_summary = #{articleSummary},</if>
+            <if test="articleImage != null">article_image = #{articleImage},</if>
+        </set>
+        where article_id = #{articleId}
+    </update>
+
+    <update id="addViewCount">
+        update <include refid="tb"/>
+        set article_view_count = article_view_count + #{add}
+        where article_id = #{id}
+    </update>
+
+    <delete id="deleteArticleById">
+        delete from <include refid="tb"/>
+        where article_id = #{article_id}
+    </delete>
+</mapper>

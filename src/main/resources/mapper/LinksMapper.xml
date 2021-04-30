@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.quitomos.blog.mapper.LinksMapper">
+
+    <sql id="tb">`links`</sql>
+
+    <select id="list" resultType="Links">
+        select * from <include refid="tb"/>
+        order by links_order
+    </select>
+
+    <select id="getLinksById" resultType="Links">
+        select * from <include refid="tb"/>
+        where links_id = #{arg0}
+    </select>
+
+    <insert id="insertLinks" parameterType="Links">
+        insert into <include refid="tb"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="linksId != null">links_id,</if>
+            <if test="linksName != null">links_name,</if>
+            <if test="linksUrl != null">links_url,</if>
+            <if test="linksImage != null">links_image,</if>
+            <if test="linksDescription != null">links_description,</if>
+            <if test="linksOrder != null">links_order,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="linksId != null">#{linksId},</if>
+            <if test="linksName != null">#{linksName},</if>
+            <if test="linksUrl != null">#{linksUrl},</if>
+            <if test="linksImage != null">#{linksImage},</if>
+            <if test="linksDescription != null">#{linksDescription},</if>
+            <if test="linksOrder != null">#{linksOrder},</if>
+        </trim>
+    </insert>
+
+    <update id="updateLinks">
+        update <include refid="tb"/>
+        <set>
+            <if test="linksName != null">links_name = #{linksName},</if>
+            <if test="linksUrl != null">links_url = #{linksUrl},</if>
+            <if test="linksImage != null">links_image = #{linksImage},</if>
+            <if test="linksDescription != null">links_description = #{linksDescription},</if>
+            <if test="linksOrder != null">links_order = #{linksOrder},</if>
+        </set>
+        where links_id = #{linksId}
+    </update>
+
+    <delete id="deleteLinksById">
+        delete from <include refid="tb"/>
+        where links_id = #{links_id}
+    </delete>
+
+</mapper>

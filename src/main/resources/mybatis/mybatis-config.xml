@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--全局不使用自动生成的主键-->
+        <setting name="useGeneratedKeys" value="false"/>
+
+        <!--打开自动驼峰命名规则映射(eg. user_id -> userId)，自动在sql的"user_id"后面加上"as userId"-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!--打开延时加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--关闭积极加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+        <!--打印查询语句-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    </settings>
+
+    <!--枚举量处理-->
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="cn.quitomos.blog.enums.UserRole"/>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="cn.quitomos.blog.enums.ArticleStatus"/>
+    </typeHandlers>
+
+    <!--PageHelper分页插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+            <!--使用rowBounds作为参数进行分页时会用到-->
+            <property name="offsetAsPageNum" value="false"/>
+            <property name="rowBoundsWithCount" value="false"/>
+
+            <!--允许页大小为0,相当于没有分页-->
+            <property name="pageSizeZero" value="true"/>
+
+            <!--允许查询非正数页(返回第一页)和超过页面总数页(返回最后一页)-->
+           <property name="reasonable" value="true"/>
+
+            <!--不支持用mapper的参数作为分页控制-->
+            <property name="supportMethodsArguments" value="false"/>
+
+            <!--不返回PageInfo类型-->
+            <property name="returnPageInfo" value="none"/>
+        </plugin>
+    </plugins>
+
+</configuration>
