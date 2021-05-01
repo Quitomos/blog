@@ -16,7 +16,7 @@
 					<div class="the-feature square from_left_and_right">
 						<a href="${page.pageUrl!'#'}" target="${page.pageTarget!}">
 							<div class="img">
-								<img src="/img/page/${page.pageImage!}">
+								<img src="${res_base_url}/img/page/${page.pageImage!}">
 							</div>
 							<div class="info">
 								<h3>
