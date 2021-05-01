@@ -130,7 +130,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#articleImage").attr("value", res.data.title);
+                    $("#articleImage").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg(res.msg);
                     }
