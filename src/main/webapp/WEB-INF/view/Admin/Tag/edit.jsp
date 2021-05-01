@@ -86,7 +86,7 @@
 
                     <tr>
                         <td>
-                            <a href="${pageContext.request.contextPath}/tag?tagid=${c.tagId}" target="_blank">${c.tagName}</a>
+                            <a href="${pageContext.request.contextPath}/tag/${c.tagId}" target="_blank">${c.tagName}</a>
                         </td>
                         <td >${c.articleCount}</td>
                         <td>

@@ -110,7 +110,7 @@
                     <c:if test="${c.parentCategory==null}">
                         <tr>
                             <td>
-                                <a href="${pageContext.request.contextPath}/category?categoryid=${c.categoryId}" target="_blank">${c.categoryName}</a>
+                                <a href="${pageContext.request.contextPath}/category/{c.categoryId}" target="_blank">${c.categoryName}</a>
                             </td>
                             <td>${c.articleCount}</td>
                             <td>
@@ -128,7 +128,7 @@
                             <c:if test="${c2.parentCategory != null and c2.parentCategory.categoryId==c.categoryId}">
                                 <tr>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/category?categoryid=${c2.categoryId}" target="_blank">——${c2.categoryName}</a>
+                                        <a href="${pageContext.request.contextPath}/category/${c2.categoryId}" target="_blank">——${c2.categoryName}</a>
                                     </td>
                                     <td>${c2.articleCount}</td>
                                     <td>

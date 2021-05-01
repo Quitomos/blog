@@ -71,7 +71,7 @@
                             </a></td>
                         <td>
                             <c:forEach items="${a.categoryList}" var="c">
-                                <a href="${pageContext.request.contextPath}/category?categoryid=${c.categoryId}"
+                                <a href="${pageContext.request.contextPath}/category/${c.categoryId}"
                                    target="_blank">${c.categoryName}</a>
                                 &nbsp;
                             </c:forEach>
