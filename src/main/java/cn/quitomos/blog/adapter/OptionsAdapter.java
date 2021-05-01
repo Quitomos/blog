@@ -19,6 +19,6 @@ public class OptionsAdapter implements Options, Serializable {
 
     @Override
     public String getBlog_favicon() {
-        return contextPath + "/img/option/" + option.getOptionSiteIcon();
+        return option.getOptionSiteIcon();
     }
 }

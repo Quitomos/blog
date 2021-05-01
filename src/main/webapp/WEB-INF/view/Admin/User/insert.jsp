@@ -116,7 +116,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#userAvatar").attr("value", res.data.title);
+                    $("#userAvatar").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg(res.msg);
                     }

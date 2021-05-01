@@ -27,6 +27,6 @@ public class AccountAdapter implements Account, Serializable {
 
     @Override
     public String getAccountIcon() {
-        return contextPath + "/img/account/" + account.getAccountIcon();
+        return account.getAccountIcon();
     }
 }

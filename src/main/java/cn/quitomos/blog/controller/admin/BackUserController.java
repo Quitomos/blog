@@ -134,12 +134,12 @@ public class BackUserController extends BaseUploadFileController {
     @RequestMapping("/upload")
     @ResponseBody
     public LayuiJson uploadAvatar(MultipartFile file) {
-        String name = super.save(file);
+        String uri = super.save(file);
 
-        if (name == null) {
+        if (uri == null) {
             return new LayuiJson(LayuiJson.Result.FAIL, "不支持的文件类型", null, 0);
         }
-        UploadFIleVO uploadFIleVO = new UploadFIleVO(name, null);
+        UploadFIleVO uploadFIleVO = new UploadFIleVO(null, uri);
         return new LayuiJson<>(LayuiJson.Result.SUCCESS, "上传成功", uploadFIleVO, 1);
     }
 

@@ -47,7 +47,7 @@
             <div class="layui-input-inline">
                 <div class="layui-upload">
                     <div class="layui-upload-list" style="">
-                        <img class="layui-upload-img" src="${pageContext.request.contextPath}/img/option/${option.optionSiteIcon}" id="demo1" width="100"
+                        <img class="layui-upload-img" src="${option.optionSiteIcon}" id="demo1" width="100"
                              height="100">
                         <p id="demoText"></p>
                     </div>
@@ -128,7 +128,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#optionSiteIcon").attr("value", res.data.title);
+                    $("#optionSiteIcon").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg(res.msg);
                     }

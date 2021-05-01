@@ -101,7 +101,7 @@ public class CommentServiceImpl implements CommentService {
         comment.setCommentCreateTime(new Date());
         User user = (User) request.getSession().getAttribute("backUser");
         comment.setCommentName(user.getUserNickname());
-        comment.setCommentAvatar(request.getContextPath() + "/img/avatar/" + user.getUserAvatar());
+        comment.setCommentAvatar(user.getUserAvatar());
         comment.setCommentOs(HtmlUtil.getOsInfo(request));
         comment.setCommentHomepage(request.getContextPath());
         comment.setCommentEmail(user.getUserEmail());
@@ -145,7 +145,7 @@ public class CommentServiceImpl implements CommentService {
         commentMapper.insertComment(comment);
 
         User admin = userService.getUserById(optionService.getOption().getOptionHostId());
-        return new CommentAdapter(comment, request.getContextPath() + "/img/avatar/" + admin.getUserAvatar(), admin.getUserEmail());
+        return new CommentAdapter(comment, admin.getUserAvatar(), admin.getUserEmail());
     }
 
     @Autowired

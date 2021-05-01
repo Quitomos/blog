@@ -32,7 +32,7 @@
             <div class="layui-input-inline">
                 <div class="layui-upload">
                     <div class="layui-upload-list" style="">
-                        <img class="layui-upload-img" src="${pageContext.request.contextPath}/img/article/${article.articleImage}" id="demo1" width="430"
+                        <img class="layui-upload-img" src="${article.articleImage}" id="demo1" width="430"
                              height="320">
                         <p id="demoText"></p>
                     </div>
@@ -171,7 +171,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#articleImage").attr("value", res.data.title);
+                    $("#articleImage").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg(res.msg);
                     }

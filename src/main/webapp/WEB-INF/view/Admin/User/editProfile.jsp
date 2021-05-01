@@ -40,7 +40,7 @@
             <div class="layui-input-inline">
                 <div class="layui-upload">
                     <div class="layui-upload-list" style="">
-                        <img class="layui-upload-img" src="${pageContext.request.contextPath}/img/avatar/${backUser.userAvatar}" id="demo1" width="100"
+                        <img class="layui-upload-img" src="${backUser.userAvatar}" id="demo1" width="100"
                              height="100">
                         <p id="demoText"></p>
                     </div>
@@ -124,7 +124,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#userAvatar").attr("value", res.data.title);
+                    $("#userAvatar").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg('上传失败');
                     }

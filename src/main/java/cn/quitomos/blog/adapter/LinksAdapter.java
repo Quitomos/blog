@@ -24,7 +24,7 @@ public class LinksAdapter implements Links {
 
     @Override
     public String getLogo() {
-        return contextPath + "/img/links/" + links.getLinksImage();
+        return links.getLinksImage();
     }
 
     @Override

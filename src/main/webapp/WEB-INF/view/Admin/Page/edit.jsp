@@ -48,7 +48,7 @@
                         图片
                         <div class="layui-upload">
                             <div class="layui-upload-list" style="">
-                                <img class="layui-upload-img" src="${pageContext.request.contextPath}/img/page/${page.pageImage}" id="demo1" width="192"
+                                <img class="layui-upload-img" src="${page.pageImage}" id="demo1" width="192"
                                      height="108">
                                 <p id="demoText"></p>
                             </div>
@@ -137,7 +137,7 @@
                             <td>${p.pageTarget}</td>
                             <td>${p.pageDescription}</td>
                             <td>
-                                <img src="${pageContext.request.contextPath}/img/page/${p.pageImage}" width="96" height="54">
+                                <img src="${p.pageImage}" width="96" height="54">
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/admin/page/edit?pageid=${p.pageId}"
@@ -170,7 +170,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#pageImage").attr("value", res.data.title);
+                    $("#pageImage").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg(res.msg);
                     }

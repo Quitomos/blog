@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/option/${sessionScope.option.optionSiteIcon}">
+    <link rel="shortcut icon" href="${sessionScope.option.optionSiteIcon}">
     <title>
         ${sessionScope.option.optionSiteTitle}后台
             <rapid:block name="title"></rapid:block>
@@ -32,7 +32,7 @@
             <li class="layui-nav-item"><a href="${pageContext.request.contextPath}/" target="_blank">前台首页</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="${pageContext.request.contextPath}/img/avatar/${sessionScope.backUser.userAvatar}" class="layui-nav-img">
+                    <img src="${sessionScope.backUser.userAvatar}" class="layui-nav-img">
                     ${sessionScope.backUser.userName}
                 </a>
                 <dl class="layui-nav-child">

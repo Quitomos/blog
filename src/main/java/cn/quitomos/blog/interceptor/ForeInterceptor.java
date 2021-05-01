@@ -56,7 +56,7 @@ public class ForeInterceptor implements HandlerInterceptor {
         String contextPath = request.getContextPath();
 
         if (themeBase == null) {
-            themeBase = request.getContextPath();
+            themeBase = contextPath;
             session.setAttribute("theme_base", themeBase);
         }
         if (i18n == null) {
@@ -72,11 +72,11 @@ public class ForeInterceptor implements HandlerInterceptor {
             session.setAttribute("blog_title", blogTitle);
         }
         if (blogUrl == null || blogUrl.equals("")) {
-            blogUrl = "http://localhost:8080/";
+            blogUrl = "https://quitomos.cn";
             session.setAttribute("blog_url", blogUrl);
         }
         if (blogLogo == null) {
-            blogLogo = contextPath + "/img/option/" + option.getOptionSiteIcon();
+            blogLogo = option.getOptionSiteIcon();
             session.setAttribute("blog_logo", blogLogo);
         }
         if (metaDescription == null) {

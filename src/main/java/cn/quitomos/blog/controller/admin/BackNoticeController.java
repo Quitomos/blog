@@ -49,13 +49,12 @@ public class BackNoticeController extends BaseUploadFileController {
     @RequestMapping("/contentimg")
     @ResponseBody
     public LayuiJson uploadContentImg(MultipartFile file, HttpServletRequest request) {
-        String name = super.save(file);
-        String uri = request.getContextPath() + "/img/notice/" + name;
+        String uri = super.save(file);
 
-        if (name == null) {
+        if (uri == null) {
             return new LayuiJson(LayuiJson.Result.FAIL, "上传失败", null, 0);
         }
-        UploadFIleVO uploadFIleVO = new UploadFIleVO(name, uri);
+        UploadFIleVO uploadFIleVO = new UploadFIleVO(uri, null);
         return new LayuiJson<>(LayuiJson.Result.SUCCESS, "上传成功", uploadFIleVO, 1);
     }
 

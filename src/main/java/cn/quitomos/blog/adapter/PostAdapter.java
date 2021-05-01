@@ -30,7 +30,7 @@ public class PostAdapter implements Post, Serializable {
 
     @Override
     public String getThumbnail() {
-        return contextPath + "/img/article/" + article.getArticleImage();
+        return article.getArticleImage();
     }
 
     @Override

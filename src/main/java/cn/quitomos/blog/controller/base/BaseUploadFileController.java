@@ -36,8 +36,8 @@ public class BaseUploadFileController {
      */
     public BaseUploadFileController(String filePath, String allowSuffix) {
         String resourcePath = this.getClass().getClassLoader().getResource("").getPath();
-        this.rootPath = resourcePath.substring(0, resourcePath.indexOf("WEB-INF"));
-        this.filePath = filePath;
+        this.rootPath = resourcePath.substring(0, resourcePath.indexOf("blog"));
+        this.filePath = "uploads/" + filePath;
         this.allowSuffix = allowSuffix;
 
         // 创建目录
@@ -50,7 +50,7 @@ public class BaseUploadFileController {
      * 将文件存放在本地
      *
      * @param file 需要存放的文件
-     * @return 成功返回新文件名,失败返回null
+     * @return 成功返回文件访问url,失败返回null
      */
     public String save(MultipartFile file) {
 
@@ -72,6 +72,6 @@ public class BaseUploadFileController {
             e.printStackTrace();
             log.error("文件上传失败, cause:{}", e);
         }
-        return newFilename;
+        return "/" + filePath + newFilename;
     }
 }

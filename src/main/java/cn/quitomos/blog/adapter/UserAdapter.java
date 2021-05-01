@@ -18,7 +18,7 @@ public class UserAdapter implements User, Serializable {
 
     @Override
     public String getAvatar() {
-        return contextPath + "/img/avatar/" + user.getUserAvatar();
+        return user.getUserAvatar();
     }
 
     @Override

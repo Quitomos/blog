@@ -125,7 +125,7 @@
                             </td>
                             <td>${p.linksDescription}</td>
                             <td>
-                                <img src="${pageContext.request.contextPath}/img/links/${p.linksImage}" width="96" height="54">
+                                <img src="${p.linksImage}" width="96" height="54">
                             </td>
                             <td>${p.linksOrder}</td>
                             <td>
@@ -161,7 +161,7 @@
                     });
                 },
                 done: function (res) {
-                    $("#linksImage").attr("value", res.data.title);
+                    $("#linksImage").attr("value", res.data.src);
                     if (res.code > 0) {
                         return layer.msg(res.msg);
                     }
