@@ -8,7 +8,7 @@
         <div class="pattern-center single-center">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.about_patternimg?? && settings.about_patternimg!='')>
-                <img class="lazyload" data-src="${settings.about_patternimg!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
+                <img class="lazyload" data-src="${res_base_url + settings.about_patternimg!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
 <#--                <#else>-->
 <#--                    <img-->
 <#--                        src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"-->

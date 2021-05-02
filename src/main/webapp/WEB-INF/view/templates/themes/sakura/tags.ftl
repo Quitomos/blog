@@ -12,7 +12,7 @@
         <div class="pattern-center">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.tag_patternimg?? && settings.tag_patternimg!='')>
-                <img data-src="${settings.tag_patternimg!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
+                <img data-src="${res_base_url + settings.tag_patternimg!}" src="${res_base_url!}/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
 <#--                <#else>-->
 <#--                    <img-->
 <#--                        src="${settings.rimage_url!}?tagid=tag&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"-->
