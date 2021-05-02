@@ -76,7 +76,7 @@ public class MarkdownUtil {
             markdown = markdown
                     .replaceAll("\\[music:(\\d+)\\]",
                             "<iframe frameborder=\"no\" border=\"0\" marginwidth=\"0\" marginheight=\"0\" width=330 "
-                            + "height=86 src=\"//music.163.com/outchain/player?type=2&id=$1&auto=1&height=66"
+                            + "height=86 src=\"//music.163.com/outchain/player?type=2&id=$1&auto=0&height=66"
                             + "\"></iframe>");
         }
 
@@ -86,7 +86,7 @@ public class MarkdownUtil {
                     .replaceAll("\\[bilibili:(\\d+)\\,(\\d+)\\,(\\d+)\\]",
                             "<iframe height=$3 width=$2 src=\"//player.bilibili.com/player.html?aid=$1\" "
                             + "scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" "
-                            + "allowfullscreen=\"true\"> </iframe>");
+                            + "allowfullscreen=\"false\"> </iframe>");
         }
 
         // Render youtube video short url.
