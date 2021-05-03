@@ -57,6 +57,14 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">站点完整链接 <span style="color: #FF5722; ">*</span></label></label>
+            <div class="layui-input-inline">
+                <input type="text" name="optionSiteUrl" value="${option.optionSiteUrl}"
+                       placeholder="" autocomplete="off" class="layui-input" required>
+            </div>
+            <div class="layui-form-mid layui-word-aux"></div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">站点描述 </label>
             <div class="layui-input-inline">
                 <input type="text" name="optionMetaDescription" value="${option.optionMetaDescription}"

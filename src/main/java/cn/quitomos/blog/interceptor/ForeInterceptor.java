@@ -72,7 +72,7 @@ public class ForeInterceptor implements HandlerInterceptor {
             session.setAttribute("blog_title", blogTitle);
         }
         if (blogUrl == null || blogUrl.equals("")) {
-            blogUrl = "https://quitomos.cn";
+            blogUrl = option.getOptionSiteUrl();
             session.setAttribute("blog_url", blogUrl);
         }
         if (blogLogo == null) {

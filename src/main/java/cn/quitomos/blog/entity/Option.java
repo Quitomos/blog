@@ -27,4 +27,6 @@ public class Option implements Serializable {
     private Integer optionHostId;
 
     private String optionAbout;
+
+    private String optionSiteUrl;
 }
