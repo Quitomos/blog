@@ -14,12 +14,12 @@ import java.util.Map;
 public interface CommentService {
 
     /**
-     * 获取最近评论
+     * 获取最近未审核评论
      *
      * @param num 评论条数
      * @return 评论列表
      */
-    List<Comment> getRecentComments(Integer num);
+    List<Comment> getRecentPendingComments(Integer num);
 
     /**
      * 评论列表
@@ -64,6 +64,12 @@ public interface CommentService {
      * @param request 用来提取ip、浏览器信息
      */
     void insertCommentReply(BackReplyDTO backReplyDTO, HttpServletRequest request);
+
+    /**
+     * 发布评论
+     * @param commentId
+     */
+    void publishComment(Integer commentId);
 
     /**
      * 留言板

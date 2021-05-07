@@ -101,6 +101,6 @@ public class CommentAdapter implements Comment {
 
     @Override
     public String getStatus() {
-        return "PUBLISHED";
+        return comment.getCommentIsPublished()?"PUBLISHED": "PENDING";
     }
 }

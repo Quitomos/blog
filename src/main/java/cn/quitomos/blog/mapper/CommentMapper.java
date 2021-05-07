@@ -54,4 +54,11 @@ public interface CommentMapper {
      * @return count
      */
     Integer getCountByArticleId(int id);
+
+    /**
+     * 只实现了更新评论是否发布
+     *
+     * @param comment comment
+     */
+    void updateComment(Comment comment);
 }

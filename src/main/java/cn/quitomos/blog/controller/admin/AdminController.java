@@ -36,7 +36,7 @@ public class AdminController {
     @RequestMapping("")
     public String index(Model model) {
         List<Article> articleList = articleService.getRecentArticles(5);
-        List<Comment> commentList = commentService.getRecentComments(5);
+        List<Comment> commentList = commentService.getRecentPendingComments(5);
         model.addAttribute("articleList", articleList);
         model.addAttribute("commentList", commentList);
         return "Admin/index";

@@ -15,13 +15,10 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
-
-drop database if exists `blog`;
-create database `blog` character set utf8mb4 collate utf8mb4_bin;
 --
 -- Table structure for table `account`
 --
+
 DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -32,7 +29,7 @@ CREATE TABLE `account` (
   `account_icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '账户网站图标',
   `account_order` int(2) unsigned NOT NULL DEFAULT '5' COMMENT '排序号',
   PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,7 +55,7 @@ CREATE TABLE `article` (
   `article_summary` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '摘要',
   `article_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '文章主图',
   PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +101,7 @@ CREATE TABLE `category` (
   `category_order` int(11) unsigned NOT NULL DEFAULT '5' COMMENT '排序值',
   `category_icon` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '图标',
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,8 +124,9 @@ CREATE TABLE `comment` (
   `comment_avatar` varchar(500) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '评论人头像',
   `comment_homepage` varchar(200) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '评论人主页',
   `comment_email` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '评论人邮箱',
+  `comment_is_published` tinyint(1) NOT NULL DEFAULT '0' COMMENT '评论是否发布',
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +141,7 @@ CREATE TABLE `journal` (
   `journal_content` varchar(1000) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '日志内容',
   `journal_create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`journal_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +159,7 @@ CREATE TABLE `links` (
   `links_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '描述',
   `links_order` int(2) unsigned NOT NULL DEFAULT '5' COMMENT '排序号',
   PRIMARY KEY (`links_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +177,7 @@ CREATE TABLE `menu` (
   `menu_icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '0' COMMENT '图标',
   `menu_order` int(11) NOT NULL DEFAULT '5' COMMENT '排序值',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,7 +195,7 @@ CREATE TABLE `notice` (
   `notice_update_time` datetime NOT NULL COMMENT '更新时间',
   `notice_order` int(2) NOT NULL DEFAULT '5' COMMENT '排序值',
   PRIMARY KEY (`notice_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +214,7 @@ CREATE TABLE `option` (
   `option_views` int(11) NOT NULL DEFAULT '0' COMMENT '访问量',
   `option_host_id` int(11) NOT NULL COMMENT '博主userId',
   `option_about` varchar(10000) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '关于页',
+  `option_site_url` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '网站地址',
   PRIMARY KEY (`option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -236,7 +235,7 @@ CREATE TABLE `page` (
   `page_order` int(11) NOT NULL DEFAULT '5' COMMENT '排序值',
   `page_target` varchar(10) COLLATE utf8mb4_bin NOT NULL DEFAULT '_self' COMMENT '超链接target',
   PRIMARY KEY (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +251,7 @@ CREATE TABLE `tag` (
   `tag_description` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `tag_name_uk` (`tag_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +276,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_name_uk` (`user_name`),
   UNIQUE KEY `user_email_uk` (`user_email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -289,4 +288,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-29 22:47:06
+-- Dump completed on 2021-05-07 21:18:25

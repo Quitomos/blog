@@ -83,6 +83,15 @@ public class BackCommentController {
         return "redirect:/admin/comment";
     }
 
+    @RequestMapping("/published")
+    public String published(@RequestParam("commentid") Integer commentId, @RequestParam("p") String page) {
+        commentService.publishComment(commentId);
+        if ("index".equals(page)) {
+            return "redirect:/admin";
+        }
+        return "redirect:/admin/comment";
+    }
+
     @Autowired
     public void setCommentService(CommentService commentService) {
         this.commentService = commentService;

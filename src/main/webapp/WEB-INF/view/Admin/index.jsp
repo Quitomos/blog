@@ -242,7 +242,7 @@
                                 </ul>
                             </div>
                             <br>
-                            <div id="latest-comments" class="activity-block"><h3>近期评论</h3>
+                            <div id="latest-comments" class="activity-block"><h3>待审核评论</h3>
                                 <ul id="the-comment-list" data-wp-lists="list:comment">
                                     <c:forEach items="${commentList}" var="c">
                                         <li class="comment   thread-even comment-item approved">
@@ -263,8 +263,8 @@
                                                 <p class="row-actions">|
                                                     <span class="">
                                                 <a data-comment-id="1268"
-                                                   href="${pageContext.request.contextPath}/admin/comment/reply?commentid=${c.commentId}">
-                                                    回复
+                                                   href="${pageContext.request.contextPath}/admin/comment/published?commentid=${c.commentId}&p=index">
+                                                    发布
                                                 </a>
                                                 </span>
                                                     <span class=""> |

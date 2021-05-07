@@ -12,11 +12,11 @@
                      select="cn.quitomos.blog.mapper.CommentMapper.getCommentById"/>
         <association property="article" column="comment_article_id"
                      select="cn.quitomos.blog.mapper.ArticleMapper.getArticleById"/>
-        <collection property="childList" column="commentPid=comment_id" ofType="Comment"
+        <collection property="childList" column="commentPid=comment_id, commentIsPublished=comment_is_published" ofType="Comment"
                     select="cn.quitomos.blog.mapper.CommentMapper.list"/>
     </resultMap>
 
-    <select id="getCommentById" resultMap="CommentEntity" parameterType="int">
+    <select id="getCommentById" resultMap="CommentEntity">
         select * from <include refid="tb"/>
         where comment_id = #{arg0}
     </select>
@@ -33,6 +33,9 @@
             <if test="commentPid != null">
                 and comment_pid = #{commentPid}
             </if>
+            <if test="commentIsPublished != null">
+                and comment_is_published = #{commentIsPublished}
+            </if>
         </where>
         order by
         <choose>
@@ -48,6 +51,7 @@
     <select id="getCountByArticleId" resultType="java.lang.Integer">
         select count(*) from <include refid="tb"/>
         where comment_article_id = #{arg0}
+        and comment_is_published = 1
     </select>
 
     <delete id="deleteCommentByArticleId">
@@ -74,6 +78,7 @@
             <if test="commentAvatar != null">comment_avatar,</if>
             <if test="commentHomepage != null">comment_homepage,</if>
             <if test="commentEmail != null">comment_email,</if>
+            <if test="commentIsPublished != null">comment_is_published,</if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -91,6 +96,15 @@
             <if test="commentAvatar != null">#{commentAvatar},</if>
             <if test="commentHomepage != null">#{commentHomepage},</if>
             <if test="commentEmail != null">#{commentEmail},</if>
+            <if test="commentIsPublished != null">#{commentIsPublished},</if>
         </trim>
     </insert>
+
+    <update id="updateComment" parameterType="Comment">
+        update <include refid="tb"/>
+        <set>
+            <if test="commentIsPublished != null">comment_is_published = #{commentIsPublished},</if>
+        </set>
+        where comment_id = #{commentId}
+    </update>
 </mapper>

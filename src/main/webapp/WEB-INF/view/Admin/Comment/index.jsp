@@ -34,6 +34,7 @@
                 <col width="300">
                 <col width=200">
                 <col width="150">
+                <col width="150">
                 <col width="50">
             </colgroup>
             <thead>
@@ -43,6 +44,7 @@
                 <th>评论内容</th>
                 <th>回复至</th>
                 <th>提交于</th>
+                <th>是否发布</th>
                 <th>ID</th>
             </tr>
             </thead>
@@ -76,6 +78,13 @@
                     </td>
                     <td>
                         <fmt:formatDate value="${c.commentCreateTime}" pattern="yyyy年MM月dd日 HH:dd:ss"/>
+                    </td>
+                    <td>${c.commentIsPublished}
+                        <c:if test="${!c.commentIsPublished}">
+                            <a href="${pageContext.request.contextPath}/admin/comment/published?commentid=${c.commentId}&p=comment">
+                                <button class="btn btn-primary btn-xs">发布</button>
+                            </a>
+                        </c:if>
                     </td>
                     <td>${c.commentId}</td>
 

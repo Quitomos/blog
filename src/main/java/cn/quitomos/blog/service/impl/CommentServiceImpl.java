@@ -37,9 +37,10 @@ public class CommentServiceImpl implements CommentService {
     private ArticleService articleService;
 
     @Override
-    public List<Comment> getRecentComments(Integer num) {
+    public List<Comment> getRecentPendingComments(Integer num) {
         Map<String, Object> params = new HashMap<>();
         params.put("commentOrder", "comment_create_time desc");
+        params.put("commentIsPublished", false);
         PageHelper.startPage(1, num);
         return commentMapper.list(params);
     }
@@ -57,6 +58,7 @@ public class CommentServiceImpl implements CommentService {
         Map<String, Object> params = new HashMap<>();
         params.put("articleId", articleId);
         params.put("commentPid", 0);
+        params.put("commentIsPublished", true);
         List<Comment> commentList = commentMapper.list(params);
         PageInfo<Comment> pageInfo = new PageInfo<>(commentList);
         User admin = userService.getUserById(optionService.getOption().getOptionHostId());
@@ -106,8 +108,16 @@ public class CommentServiceImpl implements CommentService {
         comment.setCommentHomepage(request.getContextPath());
         comment.setCommentEmail(user.getUserEmail());
         comment.setCommentContent(backReplyDTO.getCommentContent());
+        comment.setCommentIsPublished(true);
 
         commentMapper.insertComment(comment);
+    }
+
+    @Override
+    public void publishComment(Integer commentId) {
+        Comment comment = commentMapper.getCommentById(commentId);
+        comment.setCommentIsPublished(true);
+        commentMapper.updateComment(comment);
     }
 
     @Override
@@ -141,6 +151,7 @@ public class CommentServiceImpl implements CommentService {
         comment.setCommentAvatar(commentDTO.getAvatar());
         comment.setCommentHomepage(commentDTO.getAuthorUrl());
         comment.setCommentEmail(commentDTO.getEmail());
+        comment.setCommentIsPublished(false);
 
         commentMapper.insertComment(comment);
 

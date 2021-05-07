@@ -40,6 +40,8 @@ public class Comment implements Serializable {
 
     private String commentEmail;
 
+    private Boolean commentIsPublished;
+
     @ToString.Exclude
     private List<Comment> childList;
 }
