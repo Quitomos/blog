@@ -22,6 +22,7 @@
             <if test="optionHostId != null">option_host_id = #{optionHostId},</if>
             <if test="optionAbout != null">option_about = #{optionAbout},</if>
             <if test="optionSiteUrl != null">option_site_url = #{optionSiteUrl},</if>
+            <if test="optionIsComment != null">option_is_comment = #{optionIsComment},</if>
         </set>
         where option_id = #{optionId}
     </update>

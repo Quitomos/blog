@@ -94,6 +94,15 @@
                 <input type="text" value="${option.optionViews}" placeholder="" autocomplete="off" class="layui-input" disabled>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开启评论 </label>
+            <div class="layui-input-block">
+                <input type="radio" name="optionIsComment" value="true" title="是"
+                       <c:if test="${option.optionIsComment==true}">checked</c:if>>
+                <input type="radio" name="optionIsComment" value="false" title="否"
+                       <c:if test="${option.optionIsComment==false}">checked</c:if>>
+            </div>
+        </div>
         <br>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">关于我 </label>

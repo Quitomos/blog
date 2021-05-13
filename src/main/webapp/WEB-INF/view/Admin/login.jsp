@@ -106,7 +106,7 @@
         wp_attempt_focus();
         if(typeof wpOnload=='function')wpOnload();
     </script>
-    <p id="backtoblog"><a href="${pageContext.request.contextPath}/">&larr; 返回首页</a> | <a href="${pageContext.request.contextPath}/register">注册</a></p>
+    <p id="backtoblog"><a href="${pageContext.request.contextPath}/">&larr; 返回首页</a><!--| <a href="${pageContext.request.contextPath}/register">注册</a>--></p>
 
 </div>
 

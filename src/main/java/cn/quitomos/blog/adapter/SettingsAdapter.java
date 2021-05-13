@@ -127,4 +127,11 @@ public class SettingsAdapter implements Settings, Serializable {
         return true;
     }
 
+    public String getFooter_case_number() {
+        return "京ICP备2021015352号-1";
+    }
+
+    public boolean isKeep_record_mode() {
+        return !option.getOptionIsComment();
+    }
 }

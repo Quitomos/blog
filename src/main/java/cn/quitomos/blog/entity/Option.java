@@ -29,4 +29,6 @@ public class Option implements Serializable {
     private String optionAbout;
 
     private String optionSiteUrl;
+
+    private Boolean optionIsComment;
 }

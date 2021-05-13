@@ -19,6 +19,6 @@ public class Sheet {
         this.id = 0;
         this.disallowComment = false;
         this.thumbnail = contextPath + "/img/message_patternimg.jpg";
-        this.title = "留言板";
+        this.title = "一句话";
     }
 }
