@@ -215,6 +215,7 @@ CREATE TABLE `option` (
   `option_host_id` int(11) NOT NULL COMMENT '博主userId',
   `option_about` varchar(10000) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '关于页',
   `option_site_url` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '网站地址',
+  `option_is_comment` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否开启评论',
   PRIMARY KEY (`option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -288,4 +289,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-07 21:18:25
+-- Dump completed on 2021-05-13 14:45:28
