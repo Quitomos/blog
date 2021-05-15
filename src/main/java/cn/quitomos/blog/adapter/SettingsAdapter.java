@@ -131,6 +131,14 @@ public class SettingsAdapter implements Settings, Serializable {
         return "京ICP备2021015352号-1";
     }
 
+    public String getFooter_ga_select_number() {
+        return "11010802035038";
+    }
+
+    public String getFooter_ga_case_number() {
+        return "京公网安备 11010802035038号";
+    }
+
     public boolean isKeep_record_mode() {
         return !option.getOptionIsComment();
     }
