@@ -47,12 +47,14 @@
     <select id="getPrevious" resultMap="ArticleEntity">
         select * from <include refid="tb"/>
         where article_create_time &lt; #{arg0}
+        order by article_create_time desc
         limit 1
     </select>
 
     <select id="getNext" resultMap="ArticleEntity">
         select * from <include refid="tb"/>
         where article_create_time &gt; #{arg0}
+        order by article_create_time
         limit 1
     </select>
 
